@@ -1,4 +1,4 @@
-package ua.footballdata.FootballDataRestAPI;
+package ua.footballdata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

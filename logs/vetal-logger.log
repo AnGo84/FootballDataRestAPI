@@ -1,0 +1,687 @@
+2019-02-08_16:49:32.831 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 328 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_16:49:32.833 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_16:49:33.957 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_16:49:33.985 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_16:49:34.010 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_16:49:34.011 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_16:49:34.029 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_16:49:34.086 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_16:49:34.086 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 1213 ms
+2019-02-08_16:49:34.213 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_16:49:34.357 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_16:49:34.380 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_16:49:34.382 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 2.326 seconds (JVM running for 2.864)
+2019-02-08_16:50:27.077 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_16:50:27.077 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_16:50:27.081 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 3 ms
+2019-02-08_16:50:27.099 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_16:50:27.105 [http-nio-8088-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:30)
+	at ua.footballdata.controller.FootballDataRestAPIController.getUser(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_16:54:09.965 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_16:54:09.967 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_16:54:12.717 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 590 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_16:54:12.720 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_16:54:13.411 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_16:54:13.421 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_16:54:13.427 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_16:54:13.428 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_16:54:13.433 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_16:54:13.483 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_16:54:13.484 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 719 ms
+2019-02-08_16:54:13.628 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_16:54:13.747 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_16:54:13.775 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_16:54:13.777 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.392 seconds (JVM running for 1.7)
+2019-02-08_16:54:26.386 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_16:54:26.386 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_16:54:26.390 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 4 ms
+2019-02-08_16:54:26.408 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_16:54:26.414 [http-nio-8088-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:30)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:00:22.926 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:00:22.927 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:00:27.193 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 969 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:00:27.195 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:00:27.770 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:00:27.779 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:00:27.785 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:00:27.786 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:00:27.790 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:00:27.832 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:00:27.832 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 615 ms
+2019-02-08_17:00:27.962 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:00:28.061 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:00:28.083 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:00:28.085 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.118 seconds (JVM running for 1.383)
+2019-02-08_17:00:30.691 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:00:30.693 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:00:32.746 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1028 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:00:32.748 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:00:33.338 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:00:33.347 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:00:33.353 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:00:33.353 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:00:33.359 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:00:33.401 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:00:33.401 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 630 ms
+2019-02-08_17:00:33.543 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:00:33.647 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:00:33.676 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:00:33.678 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.164 seconds (JVM running for 1.446)
+2019-02-08_17:00:40.462 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:00:40.462 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:00:40.466 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 4 ms
+2019-02-08_17:00:40.483 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:00:40.489 [http-nio-8088-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:30)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:03:09.705 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:03:09.707 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:03:11.958 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1206 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:03:11.960 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:03:12.583 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:03:12.592 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:03:12.599 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:03:12.600 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:03:12.605 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:03:12.646 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:03:12.646 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 664 ms
+2019-02-08_17:03:12.680 [main] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: null
+2019-02-08_17:03:12.681 [main] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"null"]>
+2019-02-08_17:03:12.785 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:03:12.880 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:03:12.902 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:03:12.904 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.174 seconds (JVM running for 1.445)
+2019-02-08_17:03:17.253 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:03:17.253 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:03:17.257 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 3 ms
+2019-02-08_17:03:17.274 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:03:17.280 [http-nio-8088-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:30)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:05:20.291 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:05:20.294 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:05:22.498 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1374 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:05:22.500 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:05:23.105 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:05:23.115 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:05:23.121 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:05:23.122 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:05:23.126 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:05:23.167 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:05:23.167 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 644 ms
+2019-02-08_17:05:23.196 [main] INFO  u.f.service.CompetitionAppServiceImp :24 - Token: null
+2019-02-08_17:05:23.202 [main] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: null
+2019-02-08_17:05:23.203 [main] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"null"]>
+2019-02-08_17:05:23.309 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:05:23.420 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:05:23.445 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:05:23.448 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.204 seconds (JVM running for 1.481)
+2019-02-08_17:05:26.358 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:05:26.358 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:05:26.362 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 4 ms
+2019-02-08_17:05:26.380 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:05:26.380 [http-nio-8088-exec-2] INFO  u.f.service.CompetitionAppServiceImp :31 - Id 2001
+2019-02-08_17:05:26.385 [http-nio-8088-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:37)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:06:33.561 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:06:33.563 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:06:34.570 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1502 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:06:34.573 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:06:35.149 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:06:35.157 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:06:35.164 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:06:35.164 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:06:35.169 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:06:35.209 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:06:35.210 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 615 ms
+2019-02-08_17:06:35.239 [main] INFO  u.f.service.CompetitionAppServiceImp :24 - Token: null
+2019-02-08_17:06:35.244 [main] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: null
+2019-02-08_17:06:35.249 [main] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"null"]>
+2019-02-08_17:06:35.349 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:06:35.445 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:06:35.472 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:06:35.474 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.131 seconds (JVM running for 1.424)
+2019-02-08_17:06:59.909 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:06:59.909 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:06:59.912 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 3 ms
+2019-02-08_17:06:59.930 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:06:59.931 [http-nio-8088-exec-1] INFO  u.f.service.CompetitionAppServiceImp :31 - Id 2001
+2019-02-08_17:06:59.931 [http-nio-8088-exec-1] INFO  u.f.service.CompetitionAppServiceImp :32 - restService is null: true
+2019-02-08_17:06:59.936 [http-nio-8088-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:39)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:08:12.374 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:08:12.376 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:08:23.491 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1625 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:08:23.494 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:08:24.081 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:08:24.090 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:08:24.096 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:08:24.097 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:08:24.101 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:08:24.141 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:08:24.142 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 625 ms
+2019-02-08_17:08:24.172 [main] INFO  u.f.service.CompetitionAppServiceImp :24 - Token: null
+2019-02-08_17:08:24.177 [main] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: null
+2019-02-08_17:08:24.179 [main] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"null"]>
+2019-02-08_17:08:24.277 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:08:24.377 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:08:24.400 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:08:24.402 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.147 seconds (JVM running for 1.422)
+2019-02-08_17:08:26.924 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:08:26.924 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:08:26.927 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 3 ms
+2019-02-08_17:08:26.943 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:08:26.944 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :49 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-02-08_17:08:26.944 [http-nio-8088-exec-2] INFO  u.f.service.CompetitionAppServiceImp :31 - Id 2001
+2019-02-08_17:08:26.944 [http-nio-8088-exec-2] INFO  u.f.service.CompetitionAppServiceImp :32 - restService is null: true
+2019-02-08_17:08:26.949 [http-nio-8088-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:39)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:12:48.780 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:12:48.781 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:12:50.801 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 1966 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:12:50.803 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:12:51.438 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:12:51.447 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:12:51.453 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:12:51.453 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:12:51.458 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:12:51.498 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:12:51.498 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 673 ms
+2019-02-08_17:12:51.532 [main] INFO  u.f.service.CompetitionAppServiceImp :24 - Token inited: null
+2019-02-08_17:12:51.538 [main] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: null
+2019-02-08_17:12:51.539 [main] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"null"]>
+2019-02-08_17:12:51.638 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:12:51.735 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:12:51.745 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:12:51.747 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.173 seconds (JVM running for 1.453)
+2019-02-08_17:12:55.018 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:12:55.018 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:12:55.021 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 3 ms
+2019-02-08_17:12:55.038 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:12:55.038 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :49 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-02-08_17:12:55.038 [http-nio-8088-exec-2] INFO  u.f.service.CompetitionAppServiceImp :36 - Id 2001
+2019-02-08_17:12:55.039 [http-nio-8088-exec-2] INFO  u.f.service.CompetitionAppServiceImp :37 - restService is null: false
+2019-02-08_17:12:55.345 [http-nio-8088-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] :175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.web.client.HttpClientErrorException$Forbidden: 403 null] with root cause
+org.springframework.web.client.HttpClientErrorException$Forbidden: 403 null
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:83)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:122)
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:102)
+	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63)
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:777)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:735)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:669)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:578)
+	at ua.footballdata.restservice.CompetitionRestServiceImpl.findById(CompetitionRestServiceImpl.java:28)
+	at ua.footballdata.service.CompetitionAppServiceImp.findById(CompetitionAppServiceImp.java:44)
+	at ua.footballdata.controller.FootballDataRestAPIController.getCompetition(FootballDataRestAPIController.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-08_17:17:24.743 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-02-08_17:17:24.745 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:17:26.881 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 2286 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-02-08_17:17:26.883 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-02-08_17:17:27.498 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-02-08_17:17:27.508 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:17:27.514 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-02-08_17:17:27.514 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-02-08_17:17:27.519 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-02-08_17:17:27.559 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-02-08_17:17:27.559 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 653 ms
+2019-02-08_17:17:27.689 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-08_17:17:27.783 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-02-08_17:17:27.805 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-02-08_17:17:27.807 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.203 seconds (JVM running for 1.497)
+2019-02-08_17:17:33.223 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-08_17:17:33.223 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-02-08_17:17:33.227 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 4 ms
+2019-02-08_17:17:33.243 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :48 - Fetching Competition with id 2001
+2019-02-08_17:17:33.244 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :49 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-02-08_17:17:33.245 [http-nio-8088-exec-1] INFO  u.f.service.CompetitionAppServiceImp :35 - Id 2001
+2019-02-08_17:17:33.245 [http-nio-8088-exec-1] INFO  u.f.service.CompetitionAppServiceImp :36 - restService is null: true
+2019-02-08_17:17:33.245 [http-nio-8088-exec-1] INFO  u.f.service.CompetitionAppServiceImp :37 - Token for set: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-02-08_17:17:33.249 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :19 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-02-08_17:17:33.250 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :20 - Headers: <request,[Accept:"application/json", X-Auth-Token:"fe8f1920b855444fb9bbca24f9a1f03d "]>
+2019-02-08_17:17:33.430 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :31 - Get respEntity is null: false

@@ -5,11 +5,10 @@
 
 	<groupId>ua.footballdata</groupId>
 	<artifactId>FootballDataRestAPI</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>FootballDataRestAPI</name>
-	
-	<description>The Project for providing football data of Champions league in a machine-readable way</description>
+	<description>The Project for providing football data of all major leagues in a machine-readable way</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
