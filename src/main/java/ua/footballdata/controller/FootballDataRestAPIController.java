@@ -41,7 +41,7 @@ public class FootballDataRestAPIController {
  
     // -------------------Retrieve All Competitions---------------------------------------------
  
-    @RequestMapping(value = "/competition/", method = RequestMethod.GET)
+    @RequestMapping(value = "/competitions", method = RequestMethod.GET)
     public ResponseEntity<List<Competition>> listAllUsers() {
         List<Competition> competitions = competitionService.findAllData();
         if (competitions.isEmpty()) {
@@ -53,7 +53,7 @@ public class FootballDataRestAPIController {
  
  // -------------------Retrieve Single Competition------------------------------------------
     
-    @RequestMapping(value = "/competition/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/competitions/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getCompetition(@PathVariable("id") long id) {
         logger.info("Fetching Competition with id {}", id);
         logger.info("Token: {}", token);
@@ -68,7 +68,7 @@ public class FootballDataRestAPIController {
     }
     // -------------------Retrieve Competition's matches------------------------------------------
     
-    @RequestMapping(value = "/competition/{id}/matches", method = RequestMethod.GET)
+    @RequestMapping(value = "/competitions/{id}/matches", method = RequestMethod.GET)
     public ResponseEntity<?> getCompetitionMatches(@PathVariable("id") long id) {
     	logger.info("Fetching CompetitionMatches with id {}", id);
     	logger.info("Token: {}", token);

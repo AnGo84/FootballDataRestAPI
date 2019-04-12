@@ -9,10 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import ua.footballdata.model.Competition;
+import ua.footballdata.model.Competitions;
 
 public class CompetitionRestServiceImpl extends AbstractRestService<Competition> {
 	private static final Logger logger = LoggerFactory.getLogger(CompetitionRestServiceImpl.class);
-	
+
+	public CompetitionRestServiceImpl() {
+	}
+
 	public CompetitionRestServiceImpl(String token) {
 		super(token);
 		
@@ -40,8 +44,14 @@ public class CompetitionRestServiceImpl extends AbstractRestService<Competition>
 
 	@Override
 	public List<Competition> findAllData() {
-		// TODO Auto-generated method stub
-		return null;
+		RestTemplate restTemplate = new RestTemplate();
+
+		ResponseEntity<Competitions> respEntity = restTemplate.exchange(
+				"http://api.football-data.org/v2/competitions", HttpMethod.GET, this.getHttpEntitis(),
+				Competitions.class);
+		logger.info("Get respEntity is null: " + (respEntity==null));
+		Competitions competitions= respEntity.getBody();
+		return competitions.getCompetitions();
 	}
 
 }

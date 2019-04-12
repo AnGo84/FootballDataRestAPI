@@ -46,8 +46,9 @@ public class CompetitionAppServiceImp implements AppService<Competition>{
 
 	@Override
 	public List<Competition> findAllData() {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("All competitions");
+		restService = new CompetitionRestServiceImpl();
+		return restService.findAllData();
 	}
 
 }
