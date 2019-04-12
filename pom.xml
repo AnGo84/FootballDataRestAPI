@@ -57,6 +57,7 @@
 			</plugin> -->
 			
 			<!-- https://devcenter.heroku.com/articles/java-webapp-runner#create-a-procfile -->
+			<!-- Need Procfile web: java -Dserver.port=$PORT -jar target/*.jar -->
             <!-- heroku -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
