@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ua.footballdata.error.CustomErrorType;
 import ua.footballdata.model.Competition;
+import ua.footballdata.model.CompetitionMatches;
+import ua.footballdata.model.Team;
 import ua.footballdata.service.CompetitionAppServiceImp;
+import ua.footballdata.service.CompetitionMatchesAppServiceImp;
+import ua.footballdata.service.TeamAppServiceImp;
 
 
 @RestController
@@ -28,6 +32,12 @@ public class FootballDataRestAPIController {
     
     @Autowired
     private CompetitionAppServiceImp competitionService;
+    
+    @Autowired
+    private CompetitionMatchesAppServiceImp competitionMatchesService;
+    
+    @Autowired
+    private TeamAppServiceImp teamService;
  
     // -------------------Retrieve All Competitions---------------------------------------------
  
@@ -56,5 +66,35 @@ public class FootballDataRestAPIController {
         }
         return new ResponseEntity<Competition>(competition, HttpStatus.OK);
     }
-
+    // -------------------Retrieve Competition's matches------------------------------------------
+    
+    @RequestMapping(value = "/competition/{id}/matches", method = RequestMethod.GET)
+    public ResponseEntity<?> getCompetitionMatches(@PathVariable("id") long id) {
+    	logger.info("Fetching CompetitionMatches with id {}", id);
+    	logger.info("Token: {}", token);
+    	
+    	CompetitionMatches competitionMatches = competitionMatchesService.findById(id);
+    	if (competitionMatches == null) {
+    		logger.error("Matches for Competition with id {} not found.", id);
+    		return new ResponseEntity(new CustomErrorType("Matches for Competition with id " + id 
+    				+ " not found"), HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity<CompetitionMatches>(competitionMatches, HttpStatus.OK);
+    }
+    
+    // -------------------Retrieve Single Team------------------------------------------
+       
+       @RequestMapping(value = "/teams/{id}", method = RequestMethod.GET)
+       public ResponseEntity<?> getTeam(@PathVariable("id") long id) {
+           logger.info("Fetching Competition with id {}", id);
+           logger.info("Token: {}", token);
+           
+           Team team = teamService.findById(id);
+           if (team == null) {
+               logger.error("Team with id {} not found.", id);
+               return new ResponseEntity(new CustomErrorType("Competition with id " + id 
+                       + " not found"), HttpStatus.NOT_FOUND);
+           }
+           return new ResponseEntity<Team>(team, HttpStatus.OK);
+       }
 }
