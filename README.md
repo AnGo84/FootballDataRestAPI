@@ -9,3 +9,10 @@ The Project for providing football data of all major leagues in a machine-readab
 - JDK 1.8 or later
 - Maven
 
+
+API:
+
+https://footballdatarest.herokuapp.com/api/competitions
+https://footballdatarest.herokuapp.com/api/competition/{id}
+https://footballdatarest.herokuapp.com/api/competition/{id}/matches
+https://footballdatarest.herokuapp.com/api/teams/{id}
