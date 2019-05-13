@@ -17,9 +17,9 @@ import ua.footballdata.error.CustomErrorType;
 import ua.footballdata.model.Competition;
 import ua.footballdata.model.CompetitionMatches;
 import ua.footballdata.model.Team;
-import ua.footballdata.service.CompetitionAppServiceImp;
-import ua.footballdata.service.CompetitionMatchesAppServiceImp;
-import ua.footballdata.service.TeamAppServiceImp;
+import ua.footballdata.serviceAPI.CompetitionAppServiceImp;
+import ua.footballdata.serviceAPI.CompetitionMatchesAppServiceImp;
+import ua.footballdata.serviceAPI.TeamAppServiceImp;
 
 
 @RestController
@@ -43,6 +43,8 @@ public class FootballDataRestAPIController {
  
     @RequestMapping(value = "/competitions", method = RequestMethod.GET)
     public ResponseEntity<List<Competition>> listAllUsers() {
+    	logger.info("Get all competitions");
+    	logger.info("Token: {}", token);
         List<Competition> competitions = competitionService.findAllData();
         if (competitions.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);

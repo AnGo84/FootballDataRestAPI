@@ -1,4 +1,4 @@
-package ua.footballdata.service;
+package ua.footballdata.serviceAPI;
 
 import java.util.List;
 

@@ -1,0 +1,222 @@
+2019-05-07_17:06:56.595 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 23947 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:06:56.597 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:06:57.596 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:06:57.625 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 23ms. Found 0 repository interfaces.
+2019-05-07_17:06:57.915 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7ed5170f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:06:58.546 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:06:58.581 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:06:58.614 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:06:58.615 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:06:58.621 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:06:58.776 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:06:58.776 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 2071 ms
+2019-05-07_17:06:59.117 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:06:59.224 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext :554 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2019-05-07_17:06:59.225 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:06:59.227 [main] INFO  o.a.catalina.core.StandardService :173 - Stopping service [Tomcat]
+2019-05-07_17:06:59.299 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener :142 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-05-07_17:06:59.303 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter :42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2019-05-07_17:15:24.834 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 24305 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:15:24.836 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:15:25.239 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:15:25.254 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2019-05-07_17:15:25.490 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$67736851] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:15:25.710 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:15:25.720 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:15:25.726 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:15:25.727 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:15:25.732 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:15:25.788 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:15:25.788 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 929 ms
+2019-05-07_17:15:25.971 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:15:26.225 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration :86 - 
+
+Using generated security password: 074e4678-3b91-43b1-b93b-b7c41d7793ba
+
+2019-05-07_17:15:26.431 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f08caf, org.springframework.security.web.context.SecurityContextPersistenceFilter@4096aa05, org.springframework.security.web.header.HeaderWriterFilter@3f985a86, org.springframework.security.web.csrf.CsrfFilter@20011bf, org.springframework.security.web.authentication.logout.LogoutFilter@7bca6fac, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6cd166b8, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@129fed45, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4defd42, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@129bd55d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6c806c8b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@23706db8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2330e3e0, org.springframework.security.web.session.SessionManagementFilter@12ffd1de, org.springframework.security.web.access.ExceptionTranslationFilter@ca93621, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3b9632d1]
+2019-05-07_17:15:26.484 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:15:26.559 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-05-07_17:15:26.562 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 2.003 seconds (JVM running for 2.34)
+2019-05-07_17:24:44.098 [http-nio-8088-exec-2] INFO  o.a.coyote.http11.Http11Processor :175 - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:414)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:294)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-05-07_17:29:21.377 [http-nio-8088-exec-6] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-07_17:29:21.377 [http-nio-8088-exec-6] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-05-07_17:29:21.381 [http-nio-8088-exec-6] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 4 ms
+2019-05-07_17:53:50.177 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 25608 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:53:50.179 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:53:50.845 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:53:50.890 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 11ms. Found 0 repository interfaces.
+2019-05-07_17:53:51.142 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4ebcd65a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:53:51.409 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:53:51.419 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:53:51.425 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:53:51.425 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:53:51.430 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:53:51.487 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:53:51.487 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 1285 ms
+2019-05-07_17:53:51.687 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:53:51.971 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration :86 - 
+
+Using generated security password: 00a3bbe5-3c1c-4f7c-8132-1220aaed362c
+
+2019-05-07_17:53:52.174 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ed03652, org.springframework.security.web.context.SecurityContextPersistenceFilter@2acbc859, org.springframework.security.web.header.HeaderWriterFilter@61d34b4, org.springframework.security.web.csrf.CsrfFilter@7c891ba7, org.springframework.security.web.authentication.logout.LogoutFilter@58b71ceb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@20a05b32, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@20411320, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4aedaf61, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4dc8c0ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c6aed22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d27d9d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@173797f0, org.springframework.security.web.session.SessionManagementFilter@7df76d99, org.springframework.security.web.access.ExceptionTranslationFilter@3bd3d05e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10fbbdb]
+2019-05-07_17:53:52.240 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:53:52.285 [main] ERROR o.apache.catalina.util.LifecycleBase :175 - Failed to start component [Connector[HTTP/1.1-8088]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1004)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at ua.footballdata.FootballDataRestApiApplication.main(FootballDataRestApiApplication.java:10)
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1085)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1171)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1001)
+	... 14 common frames omitted
+2019-05-07_17:53:52.296 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Pausing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:53:52.297 [main] INFO  o.a.catalina.core.StandardService :173 - Stopping service [Tomcat]
+2019-05-07_17:53:52.313 [main] INFO  o.apache.catalina.util.LifecycleBase :173 - The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2019-05-07_17:53:52.314 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Stopping ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:53:52.314 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Destroying ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:53:52.333 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener :142 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-05-07_17:53:52.335 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter :42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8088 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8088, or configure this application to listen on another port.
+
+2019-05-07_17:53:52.338 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:53:52.643 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-05-07_17:53:52.647 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:54:01.476 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 25651 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:54:01.478 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:54:01.878 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:54:01.893 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 10ms. Found 0 repository interfaces.
+2019-05-07_17:54:02.115 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e07b12dc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:54:02.327 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:54:02.337 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:54:02.343 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:54:02.344 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:54:02.349 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:54:02.424 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:54:02.424 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 924 ms
+2019-05-07_17:54:02.610 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:54:02.789 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration :86 - 
+
+Using generated security password: f10ddbc5-d424-4181-9d52-6bdb965b7f25
+
+2019-05-07_17:54:02.902 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@228cea97, org.springframework.security.web.context.SecurityContextPersistenceFilter@20411320, org.springframework.security.web.header.HeaderWriterFilter@52cb4f50, org.springframework.security.web.csrf.CsrfFilter@211febf3, org.springframework.security.web.authentication.logout.LogoutFilter@38a1a26, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3681037, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@51d9b06c, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1d0a61c8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@33d53216, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c782d8e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8a98f38, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@46731692, org.springframework.security.web.session.SessionManagementFilter@4d27d9d, org.springframework.security.web.access.ExceptionTranslationFilter@1416a80a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@763cf5b9]
+2019-05-07_17:54:02.947 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:54:02.972 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-05-07_17:54:02.974 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.744 seconds (JVM running for 2.105)
+2019-05-07_17:54:08.478 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-07_17:54:08.478 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-05-07_17:54:08.492 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 13 ms
+2019-05-07_17:55:10.107 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-05-07_17:55:10.110 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:55:12.952 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 25742 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:55:12.955 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:55:13.357 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:55:13.379 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 16ms. Found 0 repository interfaces.
+2019-05-07_17:55:13.670 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c1e142d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:55:13.890 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:55:13.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:55:13.906 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:55:13.907 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:55:13.911 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:55:13.967 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:55:13.968 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 991 ms
+2019-05-07_17:55:14.152 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:55:14.328 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration :86 - 
+
+Using generated security password: 1f729f83-5d5f-496c-b142-40ff96e415ec
+
+2019-05-07_17:55:14.438 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d0a61c8, org.springframework.security.web.context.SecurityContextPersistenceFilter@2b5183ec, org.springframework.security.web.header.HeaderWriterFilter@25a5c7db, org.springframework.security.web.csrf.CsrfFilter@3bd3d05e, org.springframework.security.web.authentication.logout.LogoutFilter@3fbcfe81, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2459319c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5eb2172, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@46731692, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@69a2b3b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@572e6fd9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@20011bf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@782bf610, org.springframework.security.web.session.SessionManagementFilter@28f878a0, org.springframework.security.web.access.ExceptionTranslationFilter@719bb3b4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@71f0b72e]
+2019-05-07_17:55:14.482 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:55:14.492 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-05-07_17:55:14.494 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.814 seconds (JVM running for 2.116)
+2019-05-07_17:55:24.087 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-05-07_17:55:24.090 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:55:26.239 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 25802 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-07_17:55:26.241 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-07_17:55:26.686 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07_17:55:26.705 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 13ms. Found 0 repository interfaces.
+2019-05-07_17:55:27.002 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$39368a96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07_17:55:27.221 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-07_17:55:27.231 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:55:27.237 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-07_17:55:27.238 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-07_17:55:27.243 [main] INFO  o.a.c.core.AprLifecycleListener :173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-05-07_17:55:27.303 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-07_17:55:27.303 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 1032 ms
+2019-05-07_17:55:27.496 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07_17:55:27.686 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration :86 - 
+
+Using generated security password: b671a5ae-982a-4570-9113-17fbe58486f6
+
+2019-05-07_17:55:27.804 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73fc518f, org.springframework.security.web.context.SecurityContextPersistenceFilter@58b71ceb, org.springframework.security.web.header.HeaderWriterFilter@2b5183ec, org.springframework.security.web.csrf.CsrfFilter@7df76d99, org.springframework.security.web.authentication.logout.LogoutFilter@1c5c616f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@33d53216, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@38a1a26, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2de50ee4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1e141e42, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12abdfb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43f0c2d1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ad9e63e, org.springframework.security.web.session.SessionManagementFilter@572e6fd9, org.springframework.security.web.access.ExceptionTranslationFilter@28f878a0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4aedaf61]
+2019-05-07_17:55:27.851 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-07_17:55:27.863 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-05-07_17:55:27.865 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 1.875 seconds (JVM running for 2.218)
+2019-05-07_17:55:34.855 [http-nio-8088-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-07_17:55:34.856 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-05-07_17:55:34.861 [http-nio-8088-exec-2] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 5 ms
