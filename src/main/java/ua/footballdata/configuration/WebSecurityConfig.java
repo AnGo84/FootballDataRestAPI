@@ -27,8 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 
 	@Autowired
-    private AuthenticationEntryPoint authEntryPoint;
-	
+	private AuthenticationEntryPoint authEntryPoint;
+
 	@Autowired
 	private DataSource dataSource;
 
@@ -56,29 +56,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// The pages does not require login
-		//http.authorizeRequests().antMatchers("/", "/login", "/api**").permitAll();
+		// http.authorizeRequests().antMatchers("/", "/login", "/api**").permitAll();
 
 		// For all authorized
-		http.authorizeRequests().antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword").authenticated()
-				.anyRequest().permitAll();
+		http.authorizeRequests()
+				.antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword", "/competitions**")
+				.authenticated().anyRequest().permitAll();
 
 		// ROLE_ADMIN ROLE_MANAGER pages
 		// http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_MANAGER',
 		// 'ROLE_ADMIN')");
 
 		// For ADMIN only.
-		http.authorizeRequests().antMatchers("/users**", "/admin").access("hasRole('ROLE_ADMIN')").anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/users**", "/admin").access("hasRole('ROLE_ADMIN')").anyRequest()
+				.authenticated();
 
 		/*
-		// All requests send to the Web Server request must be authenticated
-        http.authorizeRequests().anyRequest().authenticated();
+		 * // All requests send to the Web Server request must be authenticated
+		 * http.authorizeRequests().anyRequest().authenticated();
 		 */
-        // Use AuthenticationEntryPoint to authenticate user/password
-        http.httpBasic().authenticationEntryPoint(authEntryPoint);
-        
+		// Use AuthenticationEntryPoint to authenticate user/password
+		http.httpBasic().authenticationEntryPoint(authEntryPoint);
+
 	}
+
 	@Override
+	// https://www.baeldung.com/security-none-filters-none-access-permitAll
 	public void configure(WebSecurity web) throws Exception {
-	    web.ignoring().antMatchers("/api**");
+		web.ignoring().antMatchers("/api**");
 	}
 }

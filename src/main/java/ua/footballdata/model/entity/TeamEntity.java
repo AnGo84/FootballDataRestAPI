@@ -1,29 +1,48 @@
 
-package ua.footballdata.model;
+package ua.footballdata.model.entity;
 
 import java.util.Date;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-public class Team {
 
+@Entity
+@Table(name = "teams")
+public class TeamEntity {
+	@Id
+	@Column
 	private long id;
-	private Area area;
-	private List<Competition> activeCompetitions = null;
+	@ManyToOne
+	@JoinColumn(name = "area_id")
+	private AreaEntity area;
+	@Column
 	private String name;
+	@Column
 	private String shortName;
+	@Column
 	private String tla;
+	@Column
 	private String crestUrl;
+	@Column
 	private String address;
+	@Column
 	private String phone;
+	@Column
 	private String website;
+	@Column
 	private String email;
+	@Column
 	private String founded;
+	@Column
 	private String clubColors;
+	@Column
 	private String venue;
-	private List<Player> squad = null;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
+	@Column
 	private Date lastUpdated;
 
 	public long getId() {
@@ -34,20 +53,12 @@ public class Team {
 		this.id = id;
 	}
 
-	public Area getArea() {
+	public AreaEntity getArea() {
 		return area;
 	}
 
-	public void setArea(Area area) {
+	public void setArea(AreaEntity area) {
 		this.area = area;
-	}
-
-	public List<Competition> getActiveCompetitions() {
-		return activeCompetitions;
-	}
-
-	public void setActiveCompetitions(List<Competition> activeCompetitions) {
-		this.activeCompetitions = activeCompetitions;
 	}
 
 	public String getName() {
@@ -138,59 +149,12 @@ public class Team {
 		this.venue = venue;
 	}
 
-	public List<Player> getSquad() {
-		return squad;
-	}
-
-	public void setSquad(List<Player> squad) {
-		this.squad = squad;
-	}
-
 	public Date getLastUpdated() {
 		return lastUpdated;
 	}
 
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Team [id=");
-		builder.append(id);
-		builder.append(", area=");
-		builder.append(area);
-		builder.append(", activeCompetitions=");
-		builder.append(activeCompetitions);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", shortName=");
-		builder.append(shortName);
-		builder.append(", tla=");
-		builder.append(tla);
-		builder.append(", crestUrl=");
-		builder.append(crestUrl);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", phone=");
-		builder.append(phone);
-		builder.append(", website=");
-		builder.append(website);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", founded=");
-		builder.append(founded);
-		builder.append(", clubColors=");
-		builder.append(clubColors);
-		builder.append(", venue=");
-		builder.append(venue);
-		builder.append(", squad=");
-		builder.append(squad);
-		builder.append(", lastUpdated=");
-		builder.append(lastUpdated);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

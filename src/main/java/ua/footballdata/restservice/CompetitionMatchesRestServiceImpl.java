@@ -13,23 +13,41 @@ import ua.footballdata.model.CompetitionMatches;
 
 public class CompetitionMatchesRestServiceImpl extends AbstractRestService<CompetitionMatches> {
 	private static final Logger logger = LoggerFactory.getLogger(CompetitionMatchesRestServiceImpl.class);
-	
+
 	public CompetitionMatchesRestServiceImpl(String token) {
 		super(token);
-		
+
 		logger.info("Token: " + this.getToken());
 		logger.info("Headers: " + this.getHttpEntitis());
-		
+
 	}
 
 	@Override
 	public CompetitionMatches findById(long id) {
+		logger.info("Get matches for competition id " + id);
 		RestTemplate restTemplate = new RestTemplate();
-		
+
 		ResponseEntity<CompetitionMatches> respEntity = restTemplate.exchange(
-				"http://api.football-data.org/v2/competitions/" + id+"/matches", HttpMethod.GET, this.getHttpEntitis(),
-				CompetitionMatches.class);
-		logger.info("Get respEntity is null: " + (respEntity==null));
+				"http://api.football-data.org/v2/competitions/" + id + "/matches", HttpMethod.GET,
+				this.getHttpEntitis(), CompetitionMatches.class);
+		logger.info("Get respEntity is null: " + (respEntity == null));
+		CompetitionMatches competitionMatches = respEntity.getBody();
+
+		// Competition competition =
+		// restTemplate.getForObject("http://api.football-data.org/v2/competitions/" +
+		// id, this.getHttpEntitis(), Competition.class);
+
+		return competitionMatches;
+	}
+
+	public CompetitionMatches findCompetitionMatchesForSeason(long id, int year) {
+		logger.info("Get matches for competition id " + id + " and season year " + year);
+		RestTemplate restTemplate = new RestTemplate();
+
+		ResponseEntity<CompetitionMatches> respEntity = restTemplate.exchange(
+				"http://api.football-data.org/v2/competitions/" + id + "/matches?season=" + year, HttpMethod.GET,
+				this.getHttpEntitis(), CompetitionMatches.class);
+		logger.info("Get respEntity is null: " + (respEntity == null));
 		CompetitionMatches competitionMatches = respEntity.getBody();
 
 		// Competition competition =

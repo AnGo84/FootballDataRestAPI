@@ -28,10 +28,9 @@ public class UsersController {
 	@Autowired
 	UserService userService; // Service which will do all data retrieval/manipulation work
 
-	// -------------------Retrieve All
-	// Users---------------------------------------------
+	// -------------------Retrieve All Users ---------------------------------
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ResponseEntity<List<User>> listAllUsers() {
 		List<User> users = userService.findAllUsers();
 		if (users.isEmpty()) {
@@ -41,8 +40,7 @@ public class UsersController {
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
 
-	// -------------------Retrieve Single
-	// User------------------------------------------
+	// -------------------Retrieve Single User---------------------------------
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUser(@PathVariable("id") long id) {
@@ -57,7 +55,7 @@ public class UsersController {
 
 	// -------------------Create a User-------------------------------------------
 
-	@RequestMapping(value = "/users/", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<?> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
 		logger.info("Creating User : {}", user);
 
@@ -74,28 +72,44 @@ public class UsersController {
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
 
-	// ------------------- Update a User
-	// ------------------------------------------------
+	// ------------------- Update a User ---------------------------------------
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody User user) {
-		logger.info("Updating User with id {}", id);
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateUser(@RequestBody User user) {
+		logger.info("Updating User {}", user);
 
-		User currentUser = userService.findById(id);
+		User currentUser = userService.findById(user.getId());
 
 		if (currentUser == null) {
-			logger.error("Unable to update. User with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("Unable to upate. User with id " + id + " not found."),
+			logger.error("Unable to update. User with id {} not found.", user.getId());
+			return new ResponseEntity(
+					new CustomErrorType("Unable to upate. User with id " + user.getId() + " not found."),
 					HttpStatus.NOT_FOUND);
 		}
-		
+
 		userService.updateUser(user);
-		return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
+
+	/*
+	 * @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT) public
+	 * ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody User
+	 * user) { logger.info("Updating User with id {}", id);
+	 * 
+	 * User currentUser = userService.findById(id);
+	 * 
+	 * if (currentUser == null) {
+	 * logger.error("Unable to update. User with id {} not found.", id); return new
+	 * ResponseEntity(new CustomErrorType("Unable to upate. User with id " + id +
+	 * " not found."), HttpStatus.NOT_FOUND); }
+	 * 
+	 * userService.updateUser(user); return new ResponseEntity<User>(user,
+	 * HttpStatus.OK); }
+	 */
 
 	// ------------------- Delete a User-----------------------------------------
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete-{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
 		logger.info("Fetching & Deleting User with id {}", id);
 
@@ -111,12 +125,12 @@ public class UsersController {
 
 	// ------------------- Delete All Users-----------------------------
 
-	/*@RequestMapping(value = "/user/", method = RequestMethod.DELETE)
-	public ResponseEntity<User> deleteAllUsers() {
-		logger.info("Deleting All Users");
-
-		userService.deleteAllUsers();
-		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
-	}*/
+	/*
+	 * @RequestMapping(value = "/user/", method = RequestMethod.DELETE) public
+	 * ResponseEntity<User> deleteAllUsers() { logger.info("Deleting All Users");
+	 * 
+	 * userService.deleteAllUsers(); return new
+	 * ResponseEntity<User>(HttpStatus.NO_CONTENT); }
+	 */
 
 }

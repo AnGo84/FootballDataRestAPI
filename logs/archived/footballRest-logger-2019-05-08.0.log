@@ -1,0 +1,2 @@
+2019-05-08_18:36:27.980 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin :164 - Application shutdown requested.
+2019-05-08_18:36:28.000 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor :208 - Shutting down ExecutorService 'applicationTaskExecutor'
