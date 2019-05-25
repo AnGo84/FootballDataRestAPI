@@ -7,6 +7,7 @@ public class Score {
 	private MatchScore halfTime;
 	private MatchScore extraTime;
 	private MatchScore penalties;
+
 	public String getWinner() {
 		return winner;
 	}

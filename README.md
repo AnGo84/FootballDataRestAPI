@@ -13,6 +13,6 @@ The Project for providing football data of all major leagues in a machine-readab
 API:
 
 https://footballdatarest.herokuapp.com/api/competitions
-https://footballdatarest.herokuapp.com/api/competition/{id}
-https://footballdatarest.herokuapp.com/api/competition/{id}/matches
+https://footballdatarest.herokuapp.com/api/competitions/{id}
+https://footballdatarest.herokuapp.com/api/competitions/{id}/matches
 https://footballdatarest.herokuapp.com/api/teams/{id}

@@ -15,6 +15,7 @@ public class Match {
 	private MatchTeam homeTeam;
 	private MatchTeam awayTeam;
 	private List<Referee> referees = null;
+
 	public int getId() {
 		return id;
 	}
