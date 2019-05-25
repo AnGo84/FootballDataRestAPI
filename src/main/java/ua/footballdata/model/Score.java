@@ -11,39 +11,51 @@ public class Score {
 	public String getWinner() {
 		return winner;
 	}
+
 	public void setWinner(String winner) {
 		this.winner = winner;
 	}
+
 	public String getDuration() {
 		return duration;
 	}
+
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
+
 	public MatchScore getFullTime() {
 		return fullTime;
 	}
+
 	public void setFullTime(MatchScore fullTime) {
 		this.fullTime = fullTime;
 	}
+
 	public MatchScore getHalfTime() {
 		return halfTime;
 	}
+
 	public void setHalfTime(MatchScore halfTime) {
 		this.halfTime = halfTime;
 	}
+
 	public MatchScore getExtraTime() {
 		return extraTime;
 	}
+
 	public void setExtraTime(MatchScore extraTime) {
 		this.extraTime = extraTime;
 	}
+
 	public MatchScore getPenalties() {
 		return penalties;
 	}
+
 	public void setPenalties(MatchScore penalties) {
 		this.penalties = penalties;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -62,6 +74,5 @@ public class Score {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
 }

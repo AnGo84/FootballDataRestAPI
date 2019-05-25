@@ -1,4 +1,4 @@
-package ua.footballdata.service;
+package ua.footballdata.serviceAPI;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import ua.footballdata.model.Team;
 import ua.footballdata.restservice.CompetitionRestServiceImpl;
 import ua.footballdata.restservice.TeamRestServiceImpl;
 
-@Service("teamService")
+@Service("teamAPIService")
 public class TeamAppServiceImp implements AppService<Team>{
 	private static final Logger logger = LoggerFactory.getLogger(TeamAppServiceImp.class);
 	
