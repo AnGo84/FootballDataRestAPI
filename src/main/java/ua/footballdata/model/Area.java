@@ -3,50 +3,66 @@ package ua.footballdata.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Area {
 
-    private long id;
-    private String name;
-    private String countryCode;
-    private String ensignUrl;
-    private long parentAreaId;
-    private Date lastUpdated;
+	private long id;
+	private String name;
+	private String countryCode;
+	private String ensignUrl;
+	private long parentAreaId;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
+	private Date lastUpdated;
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCountryCode() {
 		return countryCode;
 	}
+
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
+
 	public String getEnsignUrl() {
 		return ensignUrl;
 	}
+
 	public void setEnsignUrl(String ensignUrl) {
 		this.ensignUrl = ensignUrl;
 	}
+
 	public long getParentAreaId() {
 		return parentAreaId;
 	}
+
 	public void setParentAreaId(long parentAreaId) {
 		this.parentAreaId = parentAreaId;
 	}
+
 	public Date getLastUpdated() {
 		return lastUpdated;
 	}
+
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +75,7 @@ public class Area {
 		result = prime * result + (int) (parentAreaId ^ (parentAreaId >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -94,6 +111,7 @@ public class Area {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -112,7 +130,5 @@ public class Area {
 		builder.append("]");
 		return builder.toString();
 	}
-    
-
 
 }

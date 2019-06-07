@@ -4,6 +4,8 @@ package ua.footballdata.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Competition {
 
 	private long id;
@@ -14,6 +16,7 @@ public class Competition {
 	private String plan;
 	private Season currentSeason;
 	private List<Season> seasons = null;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
 	private Date lastUpdated;
 
 	public long getId() {

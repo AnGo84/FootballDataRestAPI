@@ -2,6 +2,8 @@ package ua.footballdata.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import ua.footballdata.repositories.TeamEntityRepository;
 
 @Service("teamEntityService")
 public class TeamEntityServiceImpl implements CommonService<TeamEntity> {
+	public static final Logger logger = LoggerFactory.getLogger(TeamEntityServiceImpl.class);
 	@Autowired
 	private TeamEntityRepository repository;
 
@@ -50,4 +53,9 @@ public class TeamEntityServiceImpl implements CommonService<TeamEntity> {
 		return findByName(object.getName()) != null;
 	}
 
+	public boolean isExist(long id) {
+		TeamEntity entity = findById(id);
+		logger.info("TeamEntity: " + entity);
+		return entity != null;
+	}
 }

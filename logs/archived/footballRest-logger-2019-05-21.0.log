@@ -1,0 +1,54 @@
+2019-05-21_16:46:46.441 [main] INFO  u.f.FootballDataRestApiApplication :50 - Starting FootballDataRestApiApplication on WPS-9207 with PID 14491 (/home/mbrunarskiy/Spring/FootballDataRestAPI/target/classes started by mbrunarskiy in /home/mbrunarskiy/Spring/FootballDataRestAPI)
+2019-05-21_16:46:46.444 [main] INFO  u.f.FootballDataRestApiApplication :675 - No active profile set, falling back to default profiles: default
+2019-05-21_16:46:47.322 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-21_16:46:47.423 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate :182 - Finished Spring Data repository scanning in 94ms. Found 2 repository interfaces.
+2019-05-21_16:46:47.753 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$77217a49] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:47.802 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$fcf4283] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:47.807 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:47.809 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6a078481' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:47.812 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$34a3e535] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:47.814 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker :330 - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-21_16:46:48.574 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :90 - Tomcat initialized with port(s): 8088 (http)
+2019-05-21_16:46:48.592 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Initializing ProtocolHandler ["http-nio-8088"]
+2019-05-21_16:46:48.617 [main] INFO  o.a.catalina.core.StandardService :173 - Starting service [Tomcat]
+2019-05-21_16:46:48.617 [main] INFO  o.a.catalina.core.StandardEngine :173 - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-21_16:46:48.712 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring embedded WebApplicationContext
+2019-05-21_16:46:48.713 [main] INFO  o.s.web.context.ContextLoader :296 - Root WebApplicationContext: initialization completed in 2229 ms
+2019-05-21_16:46:48.881 [main] INFO  com.zaxxer.hikari.HikariDataSource :110 - HikariPool-1 - Starting...
+2019-05-21_16:46:48.882 [main] WARN  c.z.hikari.util.DriverDataSource :68 - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-05-21_16:46:49.772 [main] INFO  com.zaxxer.hikari.HikariDataSource :123 - HikariPool-1 - Start completed.
+2019-05-21_16:46:49.868 [main] INFO  o.h.jpa.internal.util.LogHelper :31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-05-21_16:46:49.902 [main] INFO  org.hibernate.Version :46 - HHH000412: Hibernate Core {5.3.9.Final}
+2019-05-21_16:46:49.902 [main] INFO  org.hibernate.cfg.Environment :213 - HHH000206: hibernate.properties not found
+2019-05-21_16:46:50.098 [main] INFO  o.h.annotations.common.Version :49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-21_16:46:50.198 [main] INFO  org.hibernate.dialect.Dialect :157 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2019-05-21_16:46:50.632 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean :415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-21_16:46:51.106 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: Ant [pattern='/api**'], []
+2019-05-21_16:46:51.148 [main] INFO  o.s.s.web.DefaultSecurityFilterChain :43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33d230ce, org.springframework.security.web.context.SecurityContextPersistenceFilter@259287ac, org.springframework.security.web.header.HeaderWriterFilter@7f2b39a, org.springframework.security.web.authentication.logout.LogoutFilter@45e140ae, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7159d601, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@61a87366, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@167a21b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35e74e08, org.springframework.security.web.session.SessionManagementFilter@48567727, org.springframework.security.web.access.ExceptionTranslationFilter@478967eb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@37b01ce2]
+2019-05-21_16:46:51.307 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor :171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-21_16:46:51.556 [main] INFO  o.a.coyote.http11.Http11NioProtocol :173 - Starting ProtocolHandler ["http-nio-8088"]
+2019-05-21_16:46:51.615 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer :204 - Tomcat started on port(s): 8088 (http) with context path ''
+2019-05-21_16:46:51.616 [main] INFO  u.f.FootballDataRestApiApplication :59 - Started FootballDataRestApiApplication in 6.046 seconds (JVM running for 6.905)
+2019-05-21_16:47:09.328 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] :173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-21_16:47:09.328 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :524 - Initializing Servlet 'dispatcherServlet'
+2019-05-21_16:47:09.333 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet :546 - Completed initialization in 5 ms
+2019-05-21_16:47:09.457 [http-nio-8088-exec-1] INFO  o.h.h.i.QueryTranslatorFactoryInitiator :47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-05-21_16:47:09.845 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :61 - Fetching Competition with id 2001
+2019-05-21_16:47:09.845 [http-nio-8088-exec-1] INFO  u.f.c.FootballDataRestAPIController :62 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:09.846 [http-nio-8088-exec-1] INFO  u.f.s.CompetitionAppServiceImp :34 - Id 2001
+2019-05-21_16:47:09.846 [http-nio-8088-exec-1] INFO  u.f.s.CompetitionAppServiceImp :35 - restService is null: true
+2019-05-21_16:47:09.846 [http-nio-8088-exec-1] INFO  u.f.s.CompetitionAppServiceImp :36 - Token for set: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:09.861 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :23 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:09.862 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :24 - Headers: <request,[Accept:"application/json", X-Auth-Token:"fe8f1920b855444fb9bbca24f9a1f03d "]>
+2019-05-21_16:47:10.242 [http-nio-8088-exec-1] INFO  u.f.r.CompetitionRestServiceImpl :35 - Get respEntity is null: false
+2019-05-21_16:47:16.137 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :77 - Fetching CompetitionMatches with id 2001
+2019-05-21_16:47:16.137 [http-nio-8088-exec-2] INFO  u.f.c.FootballDataRestAPIController :78 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:16.137 [http-nio-8088-exec-2] INFO  u.f.s.CompetitionMatchesAppServiceImp :36 - Id 2001
+2019-05-21_16:47:16.138 [http-nio-8088-exec-2] INFO  u.f.s.CompetitionMatchesAppServiceImp :37 - restService is null: true
+2019-05-21_16:47:16.138 [http-nio-8088-exec-2] INFO  u.f.s.CompetitionMatchesAppServiceImp :38 - Token for set: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:16.138 [http-nio-8088-exec-2] INFO  u.f.r.CompetitionMatchesRestServiceImpl :20 - Token: fe8f1920b855444fb9bbca24f9a1f03d 
+2019-05-21_16:47:16.139 [http-nio-8088-exec-2] INFO  u.f.r.CompetitionMatchesRestServiceImpl :21 - Headers: <request,[Accept:"application/json", X-Auth-Token:"fe8f1920b855444fb9bbca24f9a1f03d "]>
+2019-05-21_16:47:16.139 [http-nio-8088-exec-2] INFO  u.f.r.CompetitionMatchesRestServiceImpl :27 - Get matches for competition id 2001
+2019-05-21_16:47:16.577 [http-nio-8088-exec-2] INFO  u.f.r.CompetitionMatchesRestServiceImpl :33 - Get respEntity is null: false

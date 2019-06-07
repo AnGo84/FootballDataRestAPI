@@ -7,35 +7,35 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ua.footballdata.model.entity.SeasonEntity;
-import ua.footballdata.repositories.SeasonEntityRepository;
+import ua.footballdata.model.entity.MatchEntity;
+import ua.footballdata.repositories.MatchEntityRepository;
 
-@Service("seasonEntityService")
-public class SeasonEntityServiceImpl implements CommonService<SeasonEntity> {
-	public static final Logger logger = LoggerFactory.getLogger(SeasonEntityServiceImpl.class);
+@Service("matchEntityService")
+public class MatchEntityServiceImpl implements CommonService<MatchEntity> {
+	public static final Logger logger = LoggerFactory.getLogger(MatchEntityServiceImpl.class);
 	@Autowired
-	private SeasonEntityRepository repository;
+	private MatchEntityRepository repository;
 
 	@Override
-	public SeasonEntity findById(long id) {
+	public MatchEntity findById(long id) {
 		// return repository.getOne(id);
 		return repository.findById(id).orElse(null);
 	}
 
 	@Override
-	public SeasonEntity findByName(String name) {
+	public MatchEntity findByName(String name) {
 		// return repository.findByName(name);
 		return null;
 	}
 
 	@Override
-	public void save(SeasonEntity object) {
+	public void save(MatchEntity object) {
 		repository.save(object);
 
 	}
 
 	@Override
-	public void update(SeasonEntity object) {
+	public void update(MatchEntity object) {
 		this.save(object);
 	}
 
@@ -45,18 +45,18 @@ public class SeasonEntityServiceImpl implements CommonService<SeasonEntity> {
 	}
 
 	@Override
-	public List<SeasonEntity> findAll() {
+	public List<MatchEntity> findAll() {
 		return repository.findAll();
 	}
 
 	@Override
-	public boolean isExist(SeasonEntity object) {
+	public boolean isExist(MatchEntity object) {
 		return findById(object.getId()) != null;
 	}
 
 	public boolean isExist(long id) {
-		SeasonEntity entity = findById(id);
-		logger.info("SeasonEntity: " + entity);
+		MatchEntity entity = findById(id);
+		logger.info("MatchEntity: " + entity);
 		return entity != null;
 	}
 

@@ -1,5 +1,6 @@
 package ua.footballdata.model.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -13,8 +14,10 @@ import ua.footballdata.model.entity.compositeId.CompetitionSeasonId;
 
 public class CompetitionSeasonEntity {
 	@Id
+	@Column(name = "competition_id")
 	private long competitionId;
 	@Id
+	@Column(name = "season_id")
 	private long seasonId;
 
 	public CompetitionSeasonEntity() {

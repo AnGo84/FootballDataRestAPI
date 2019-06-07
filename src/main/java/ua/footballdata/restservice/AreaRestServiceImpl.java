@@ -9,28 +9,26 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import ua.footballdata.model.Area;
-import ua.footballdata.model.Competition;
-import ua.footballdata.model.Team;
 
 public class AreaRestServiceImpl extends AbstractRestService<Area> {
 	private static final Logger logger = LoggerFactory.getLogger(AreaRestServiceImpl.class);
-	
+
 	public AreaRestServiceImpl(String token) {
 		super(token);
-		
+
 		logger.info("Token: " + this.getToken());
 		logger.info("Headers: " + this.getHttpEntitis());
-		
+
 	}
 
 	@Override
 	public Area findById(long id) {
 		RestTemplate restTemplate = new RestTemplate();
-		
-		ResponseEntity<Area> respEntity = restTemplate.exchange(
-				"http://api.football-data.org/v2/areas/" + id, HttpMethod.GET, this.getHttpEntitis(),
-				Area.class);
-		logger.info("Get respEntity is null: " + (respEntity==null));
+
+		ResponseEntity<Area> respEntity = restTemplate.exchange("http://api.football-data.org/v2/areas/" + id,
+				HttpMethod.GET, this.getHttpEntitis(), Area.class);
+
+		logger.info("Get respEntity is null: " + (respEntity == null));
 		Area area = respEntity.getBody();
 
 		// Competition competition =
