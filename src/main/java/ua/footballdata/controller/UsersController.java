@@ -43,7 +43,7 @@ public class UsersController {
 	// -------------------Retrieve Single User---------------------------------
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUser(@PathVariable("id") long id) {
+	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
 		logger.info("Fetching User with id {}", id);
 		User user = userService.findById(id);
 		if (user == null) {
@@ -54,7 +54,7 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = "/{login}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUser(@PathVariable("login") String login) {
+	public ResponseEntity<?> getUserByLogin(@PathVariable("login") String login) {
 		logger.info("Fetching User with Login {}", login);
 		User user = userService.findByLogin(login);
 		if (user == null) {
