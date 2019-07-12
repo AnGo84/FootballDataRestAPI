@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "areas")
@@ -23,6 +25,7 @@ public class AreaEntity {
 	@Column(name = "parent_area_id")
 	private long parentAreaId;
 	@Column(name = "last_updated")
+	@Temporal(TemporalType.DATE)
 	private Date lastUpdated;
 
 	public long getId() {

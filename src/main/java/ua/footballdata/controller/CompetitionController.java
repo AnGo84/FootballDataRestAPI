@@ -21,6 +21,7 @@ import ua.footballdata.model.Competition;
 import ua.footballdata.model.entity.CompetitionEntity;
 import ua.footballdata.model.mapper.CompetitionMapper;
 import ua.footballdata.service.CompetitionEntityServiceImpl;
+import ua.footballdata.service.UpdateFromAPIService;
 import ua.footballdata.serviceAPI.CompetitionAppServiceImp;
 
 @RestController
@@ -36,6 +37,8 @@ public class CompetitionController {
 	private CompetitionEntityServiceImpl competitionEntityService;
 	@Autowired
 	private CompetitionAppServiceImp competitionAPIService;
+	@Autowired
+	private UpdateFromAPIService updateFromAPIService;
 
 	//
 	@Autowired
@@ -104,7 +107,7 @@ public class CompetitionController {
 					HttpStatus.NOT_FOUND);
 		}
 
-		competitionEntityService.update(competitionEntity);
+		competitionEntityService.update(currentCompetitionEntity);
 		return new ResponseEntity<CompetitionEntity>(currentCompetitionEntity, HttpStatus.OK);
 	}
 
@@ -150,6 +153,15 @@ public class CompetitionController {
 		 * ResponseEntity(new CustomErrorType("CompetitionEntity with id " + id +
 		 * " not found"), HttpStatus.NOT_FOUND); }
 		 */
+
+		try {
+			updateFromAPIService.updateCompetitionWithMatches(id);
+		} catch (CustomErrorType e) {
+			logger.error("Update Competition with id {} from API error {}.", id, e.getMessage());
+			return new ResponseEntity(
+					new CustomErrorType("Update Competition with id " + id + " from API error " + e.getMessage()),
+					HttpStatus.UNPROCESSABLE_ENTITY);
+		}
 
 		return new ResponseEntity<CompetitionEntity>(competitionEntity, HttpStatus.OK);
 	}

@@ -8,7 +8,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import ua.footballdata.model.Competition;
 import ua.footballdata.model.CompetitionMatches;
 
 public class CompetitionMatchesRestServiceImpl extends AbstractRestService<CompetitionMatches> {

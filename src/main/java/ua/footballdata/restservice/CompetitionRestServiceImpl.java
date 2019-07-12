@@ -19,20 +19,20 @@ public class CompetitionRestServiceImpl extends AbstractRestService<Competition>
 
 	public CompetitionRestServiceImpl(String token) {
 		super(token);
-		
+
 		logger.info("Token: " + this.getToken());
 		logger.info("Headers: " + this.getHttpEntitis());
-		
+
 	}
 
 	@Override
 	public Competition findById(long id) {
 		RestTemplate restTemplate = new RestTemplate();
-		
+
 		ResponseEntity<Competition> respEntity = restTemplate.exchange(
 				"http://api.football-data.org/v2/competitions/" + id, HttpMethod.GET, this.getHttpEntitis(),
 				Competition.class);
-		logger.info("Get respEntity is null: " + (respEntity==null));
+		logger.info("Get respEntity is null: " + (respEntity == null));
 		Competition competition = respEntity.getBody();
 
 		// Competition competition =
@@ -46,11 +46,10 @@ public class CompetitionRestServiceImpl extends AbstractRestService<Competition>
 	public List<Competition> findAllData() {
 		RestTemplate restTemplate = new RestTemplate();
 
-		ResponseEntity<Competitions> respEntity = restTemplate.exchange(
-				"http://api.football-data.org/v2/competitions", HttpMethod.GET, this.getHttpEntitis(),
-				Competitions.class);
-		logger.info("Get respEntity is null: " + (respEntity==null));
-		Competitions competitions= respEntity.getBody();
+		ResponseEntity<Competitions> respEntity = restTemplate.exchange("http://api.football-data.org/v2/competitions",
+				HttpMethod.GET, this.getHttpEntitis(), Competitions.class);
+		logger.info("Get respEntity is null: " + (respEntity == null));
+		Competitions competitions = respEntity.getBody();
 		return competitions.getCompetitions();
 	}
 

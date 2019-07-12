@@ -1,5 +1,7 @@
 package ua.footballdata.model.entity;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,12 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-
-import java.util.Set;
-
-import javax.persistence.*;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -21,19 +21,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="login")
+	@Column(name = "login")
 	private String login;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name="full_name")
+
+	@Column(name = "full_name")
 	private String fullName;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="phone")
+
+	@Column(name = "phone")
 	private String phone;
 
 	@Column(name = "active", length = 1, nullable = false)
@@ -41,8 +41,12 @@ public class User {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	/*@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))*/
+	/*
+	 * @ManyToMany(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
+	 * inverseJoinColumns = @JoinColumn(name = "role_id"))
+	 */
 	private Set<UserRole> roles;
 
 	public User() {
@@ -122,8 +126,6 @@ public class User {
 	public void setRoles(Set<UserRole> roles) {
 		this.roles = roles;
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -205,6 +207,5 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
+
 }

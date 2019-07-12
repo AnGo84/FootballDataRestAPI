@@ -1,16 +1,21 @@
 package ua.footballdata.model;
 
+import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Match {
 	private int id;
 	private Season season;
-	private String utcDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
+	private Date utcDate;
 	private String status;
 	private String matchday;
 	private String stage;
 	private String group;
-	private String lastUpdated;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
+	private Date lastUpdated;
 	private Score score;
 	private MatchTeam homeTeam;
 	private MatchTeam awayTeam;
@@ -19,75 +24,99 @@ public class Match {
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public Season getSeason() {
 		return season;
 	}
+
 	public void setSeason(Season season) {
 		this.season = season;
 	}
-	public String getUtcDate() {
+
+	public Date getUtcDate() {
 		return utcDate;
 	}
-	public void setUtcDate(String utcDate) {
+
+	public void setUtcDate(Date utcDate) {
 		this.utcDate = utcDate;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String getMatchday() {
 		return matchday;
 	}
+
 	public void setMatchday(String matchday) {
 		this.matchday = matchday;
 	}
+
 	public String getStage() {
 		return stage;
 	}
+
 	public void setStage(String stage) {
 		this.stage = stage;
 	}
+
 	public String getGroup() {
 		return group;
 	}
+
 	public void setGroup(String group) {
 		this.group = group;
 	}
-	public String getLastUpdated() {
+
+	public Date getLastUpdated() {
 		return lastUpdated;
 	}
-	public void setLastUpdated(String lastUpdated) {
+
+	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+
 	public Score getScore() {
 		return score;
 	}
+
 	public void setScore(Score score) {
 		this.score = score;
 	}
+
 	public MatchTeam getHomeTeam() {
 		return homeTeam;
 	}
+
 	public void setHomeTeam(MatchTeam homeTeam) {
 		this.homeTeam = homeTeam;
 	}
+
 	public MatchTeam getAwayTeam() {
 		return awayTeam;
 	}
+
 	public void setAwayTeam(MatchTeam awayTeam) {
 		this.awayTeam = awayTeam;
 	}
+
 	public List<Referee> getReferees() {
 		return referees;
 	}
+
 	public void setReferees(List<Referee> referees) {
 		this.referees = referees;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -118,7 +147,5 @@ public class Match {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
 
 }
