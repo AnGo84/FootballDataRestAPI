@@ -53,6 +53,17 @@ public class UsersController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/{login}", method = RequestMethod.GET)
+	public ResponseEntity<?> getUser(@PathVariable("login") String login) {
+		logger.info("Fetching User with Login {}", login);
+		User user = userService.findByLogin(login);
+		if (user == null) {
+			logger.error("User with login {} not found.", login);
+			return new ResponseEntity(new CustomErrorType("User with login " + login + " not found"), HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+
 	// -------------------Create a User-------------------------------------------
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
