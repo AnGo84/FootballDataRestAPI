@@ -53,7 +53,7 @@ public class UsersController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{login}", method = RequestMethod.GET)
+	@RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUserByLogin(@PathVariable("login") String login) {
 		logger.info("Fetching User with Login {}", login);
 		User user = userService.findByLogin(login);
