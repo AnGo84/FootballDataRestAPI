@@ -96,6 +96,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<!-- Java 8 for Travis-->
+				<configuration>
+					<release>8</release>
+				</configuration>
+				<!--  -->
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -110,10 +115,7 @@
 									<version>9.0.11.0</version>
 									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
-							</artifactItems>
-							<!-- java version -->
-							<release>8</release>
-							
+							</artifactItems>							
 						</configuration>
 					</execution>
 				</executions>

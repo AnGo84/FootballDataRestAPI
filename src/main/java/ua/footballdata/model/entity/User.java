@@ -39,7 +39,7 @@ public class User {
 	@Column(name = "active", length = 1, nullable = false)
 	private boolean active;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	/*
 	 * @ManyToMany(cascade = CascadeType.ALL)

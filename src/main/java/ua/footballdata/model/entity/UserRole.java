@@ -3,20 +3,20 @@ package ua.footballdata.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-/*@Table(name = "roles", //
-		uniqueConstraints = { //
-				@UniqueConstraint(name = "APP_ROLE_UK", columnNames = "ROLE_NAME") })*/
-@Table(name="roles")
+/*
+ * @Table(name = "roles", // uniqueConstraints = { //
+ * 
+ * @UniqueConstraint(name = "APP_ROLE_UK", columnNames = "ROLE_NAME") })
+ */
+@Table(name = "roles")
 public class UserRole {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	@Column(name = "id")
 	private Long id;
 
@@ -81,5 +81,4 @@ public class UserRole {
 		return builder.toString();
 	}
 
-	
 }
