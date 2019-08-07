@@ -17,7 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import ua.footballdata.error.CustomErrorType;
 import ua.footballdata.model.entity.User;
-import ua.footballdata.service.UserService;
+import ua.footballdata.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/users")
@@ -26,7 +26,7 @@ public class UsersController {
 	public static final Logger logger = LoggerFactory.getLogger(UsersController.class);
 
 	@Autowired
-	UserService userService; // Service which will do all data retrieval/manipulation work
+	private UserServiceImpl userService; // Service which will do all data retrieval/manipulation work
 
 	// -------------------Retrieve All Users ---------------------------------
 
@@ -59,7 +59,8 @@ public class UsersController {
 		User user = userService.findByLogin(login);
 		if (user == null) {
 			logger.error("User with login {} not found.", login);
-			return new ResponseEntity(new CustomErrorType("User with login " + login + " not found"), HttpStatus.NOT_FOUND);
+			return new ResponseEntity(new CustomErrorType("User with login " + login + " not found"),
+					HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}

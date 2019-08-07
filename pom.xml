@@ -91,7 +91,8 @@
 			<!-- https://devcenter.heroku.com/articles/java-webapp-runner#create-a-procfile -->
 
 			<!-- Need Procfile web: java -Dserver.port=$PORT -jar target/*.jar -->
-			<!-- heroku -->
+			<!-- heroku -->	
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -110,6 +111,9 @@
 									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
+							<!-- java version -->
+							<release>8</release>
+							
 						</configuration>
 					</execution>
 				</executions>

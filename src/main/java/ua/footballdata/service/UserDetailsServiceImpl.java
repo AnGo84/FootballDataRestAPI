@@ -1,5 +1,7 @@
 package ua.footballdata.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,8 +12,6 @@ import ua.footballdata.model.entity.User;
 import ua.footballdata.model.entity.UserDetailsImpl;
 import ua.footballdata.repositories.UserRepository;
 
-import java.util.Optional;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -20,7 +20,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		Optional<User> optionalUser = usersRepository.findByLogin(login);
+		// Optional<User> optionalUser = usersRepository.findByLogin(login);
+		Optional<User> optionalUser = Optional.of(usersRepository.findByLogin(login));
 		return Optional.ofNullable(optionalUser)
 				.orElseThrow(() -> new UsernameNotFoundException("User's Login Not Found")).map(UserDetailsImpl::new)
 				.get();
