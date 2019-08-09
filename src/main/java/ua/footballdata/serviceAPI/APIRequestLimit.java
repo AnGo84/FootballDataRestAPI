@@ -3,6 +3,7 @@ package ua.footballdata.serviceAPI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -108,9 +109,13 @@ public class APIRequestLimit {
 				if (timeForWaiting < 0) {
 					timeForWaiting = 0;
 				}
-				Thread.sleep(timeForWaiting * 1000 + 100);
+				// Thread.sleep(timeForWaiting * 1000 + 100);
+				getTimer(timeForWaiting * 1000 + 100).call();
 				// Thread.sleep(secondsAfterLastRequest() * 1000);
 			} catch (InterruptedException e) {
+				logger.error("Waiting error: " + e.getMessage());
+				e.printStackTrace();
+			} catch (Exception e) {
 				logger.error("Waiting error: " + e.getMessage());
 				e.printStackTrace();
 			}
@@ -119,4 +124,18 @@ public class APIRequestLimit {
 		add();
 	}
 
+	/*
+	 * In cause disconnect by timeout:
+	 * https://stackoverflow.com/questions/51066238/spring-server-connection-timeout
+	 * -not-working
+	 */
+	private Callable<String> getTimer(long time) throws InterruptedException {
+		return new Callable<String>() {
+			@Override
+			public String call() throws Exception {
+				Thread.sleep(time); // this will cause a timeout
+				return "Timer woke up";
+			}
+		};
+	}
 }
