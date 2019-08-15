@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import ua.footballdata.model.entity.UserRole;
 
-
 @Repository
 public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
 

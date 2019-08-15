@@ -29,6 +29,10 @@
 		<!-- <mysql.connector.version>5.1.31</mysql.connector.version> -->
 	</properties>
 
+	<!-- dynamodb <dependencyManagement> <dependencies> <dependency> <groupId>org.springframework.data</groupId> 
+		<artifactId>spring-data-releasetrain</artifactId> <version>Hopper-SR10</version> 
+		<type>pom</type> <scope>import</scope> </dependency> </dependencies> </dependencyManagement> -->
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,19 +75,25 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
-			</dependency> -->
-
 
 		<!-- enabling XML representations -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
+	
 
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+
 		<plugins>
 			<!-- <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
 				</plugin> -->
@@ -91,16 +101,16 @@
 			<!-- https://devcenter.heroku.com/articles/java-webapp-runner#create-a-procfile -->
 
 			<!-- Need Procfile web: java -Dserver.port=$PORT -jar target/*.jar -->
-			<!-- heroku -->	
-			
+			<!-- heroku -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<!-- Java 8 for Travis-->
+				<!-- Java 8 for Travis -->
 				<configuration>
 					<release>8</release>
 				</configuration>
-				<!--  -->
+				<!-- -->
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -115,7 +125,7 @@
 									<version>9.0.11.0</version>
 									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
-							</artifactItems>							
+							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>

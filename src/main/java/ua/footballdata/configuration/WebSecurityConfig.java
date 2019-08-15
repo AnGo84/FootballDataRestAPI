@@ -83,6 +83,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	// https://www.baeldung.com/security-none-filters-none-access-permitAll
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/api**");
+		web.ignoring().antMatchers("/api/**");
 	}
 }

@@ -32,6 +32,7 @@ public class UsersController {
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ResponseEntity<List<User>> listAllUsers() {
+		logger.info("Get list of users");
 		List<User> users = userService.findAllUsers();
 		if (users.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);

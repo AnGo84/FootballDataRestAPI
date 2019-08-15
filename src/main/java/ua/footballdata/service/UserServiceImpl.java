@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	public User findById(long id) {
 		logger.info("Find User with ID: " + id);
-		return userRepository.getOne(id);
+		return userRepository.findById(id).orElse(null);
 	}
 
 	public User findByLogin(String login) {

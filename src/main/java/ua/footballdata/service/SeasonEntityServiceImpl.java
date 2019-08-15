@@ -20,6 +20,7 @@ public class SeasonEntityServiceImpl implements CommonService<SeasonEntity> {
 	public SeasonEntity findById(long id) {
 		// return repository.getOne(id);
 		return repository.findById(id).orElse(null);
+		// return repository.findById(id);
 	}
 
 	@Override

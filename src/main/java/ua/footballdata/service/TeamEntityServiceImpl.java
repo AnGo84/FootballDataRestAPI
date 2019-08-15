@@ -20,6 +20,7 @@ public class TeamEntityServiceImpl implements CommonService<TeamEntity> {
 	public TeamEntity findById(long id) {
 		// return repository.getOne(id);
 		return repository.findById(id).orElse(null);
+		// return repository.findById(id);
 	}
 
 	@Override

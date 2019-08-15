@@ -6,11 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ua.footballdata.model.entity.AreaEntity;
 import ua.footballdata.repositories.AreaEntityRepository;
 
 @Service("areaEntityService")
+@Transactional
 public class AreaEntityServiceImpl implements CommonService<AreaEntity> {
 	public static final Logger logger = LoggerFactory.getLogger(AreaEntityServiceImpl.class);
 	@Autowired
@@ -19,7 +21,9 @@ public class AreaEntityServiceImpl implements CommonService<AreaEntity> {
 	@Override
 	public AreaEntity findById(long id) {
 		// return repository.getOne(id);
-		return repository.findById(id).orElse(null);
+		// return repository.findById(id).orElse(null);
+
+		return repository.findById(id);
 	}
 
 	@Override

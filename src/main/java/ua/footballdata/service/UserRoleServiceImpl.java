@@ -1,13 +1,12 @@
 package ua.footballdata.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.footballdata.model.entity.User;
+
 import ua.footballdata.model.entity.UserRole;
 import ua.footballdata.repositories.UserRoleRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service("userRoleService")
 public class UserRoleServiceImpl {
@@ -17,6 +16,5 @@ public class UserRoleServiceImpl {
 	public List<UserRole> findAllUserRoles() {
 		return userRoleRepository.findAll();
 	}
-
 
 }

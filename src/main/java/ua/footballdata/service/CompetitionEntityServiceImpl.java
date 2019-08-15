@@ -16,7 +16,8 @@ public class CompetitionEntityServiceImpl implements CommonService<CompetitionEn
 	@Override
 	public CompetitionEntity findById(long id) {
 		// return repository.getOne(id);
-		return repository.findById(id).orElse(null);
+		// return repository.findById(id).orElse(null);
+		return repository.findById(id);
 	}
 
 	@Override

@@ -8,4 +8,5 @@ import ua.footballdata.model.entity.SeasonEntity;
 @Repository
 public interface SeasonEntityRepository extends JpaRepository<SeasonEntity, Long> {
 	// SeasonEntity findByName(String name);
+
 }

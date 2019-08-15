@@ -7,7 +7,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootApplication(scanBasePackages = { "ua.footballdata" })
-//public class FootballDataRestApiApplication extends SpringBootServletInitializer{
+//@ComponentScan(basePackages = { "com.baeldung" })
+
+/*
+ * @Configuration
+ * 
+ * @ComponentScan
+ * 
+ * @EnableAutoConfiguration
+ */
 public class FootballDataRestApiApplication extends SpringBootServletInitializer {
 
 	/*

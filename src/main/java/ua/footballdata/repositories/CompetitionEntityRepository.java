@@ -8,4 +8,7 @@ import ua.footballdata.model.entity.CompetitionEntity;
 @Repository
 public interface CompetitionEntityRepository extends JpaRepository<CompetitionEntity, Long> {
 	CompetitionEntity findByName(String name);
+
+	CompetitionEntity findById(long id);
+
 }
