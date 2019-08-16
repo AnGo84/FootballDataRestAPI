@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import ua.footballdata.model.CompetitionMatches;
+import ua.footballdata.serviceAPI.APIRequestLimit;
 
 public class CompetitionMatchesRestServiceImpl extends AbstractRestService<CompetitionMatches> {
 	private static final Logger logger = LoggerFactory.getLogger(CompetitionMatchesRestServiceImpl.class);
+
+	@Autowired
+	private APIRequestLimit apiRequestLimit;
 
 	public CompetitionMatchesRestServiceImpl(String token) {
 		super(token);
@@ -30,6 +35,9 @@ public class CompetitionMatchesRestServiceImpl extends AbstractRestService<Compe
 				"http://api.football-data.org/v2/competitions/" + id + "/matches", HttpMethod.GET,
 				this.getHttpEntitis(), CompetitionMatches.class);
 		logger.info("Get respEntity is null: " + (respEntity == null));
+
+		apiRequestLimit.initByHeaders(respEntity.getHeaders());
+
 		CompetitionMatches competitionMatches = respEntity.getBody();
 
 		// Competition competition =
@@ -47,6 +55,9 @@ public class CompetitionMatchesRestServiceImpl extends AbstractRestService<Compe
 				"http://api.football-data.org/v2/competitions/" + id + "/matches?season=" + year, HttpMethod.GET,
 				this.getHttpEntitis(), CompetitionMatches.class);
 		logger.info("Get respEntity is null: " + (respEntity == null));
+
+		apiRequestLimit.initByHeaders(respEntity.getHeaders());
+
 		CompetitionMatches competitionMatches = respEntity.getBody();
 
 		// Competition competition =

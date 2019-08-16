@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import ua.footballdata.model.Team;
+import ua.footballdata.serviceAPI.APIRequestLimit;
 
 public class TeamRestServiceImpl extends AbstractRestService<Team> {
 	private static final Logger logger = LoggerFactory.getLogger(TeamRestServiceImpl.class);
+
+	@Autowired
+	private APIRequestLimit apiRequestLimit;
 
 	public TeamRestServiceImpl(String token) {
 		super(token);
@@ -30,6 +35,7 @@ public class TeamRestServiceImpl extends AbstractRestService<Team> {
 		logger.info("Get respEntity is null: " + (respEntity == null));
 		Team team = respEntity.getBody();
 
+		apiRequestLimit.initByHeaders(respEntity.getHeaders());
 		// Competition competition =
 		// restTemplate.getForObject("http://api.football-data.org/v2/competitions/" +
 		// id, this.getHttpEntitis(), Competition.class);

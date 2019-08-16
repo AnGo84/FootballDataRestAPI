@@ -1,53 +1,60 @@
 package ua.footballdata.model.entity;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 public class UserDetailsImpl extends User implements UserDetails {
+	public static final Logger logger = LoggerFactory.getLogger(UserDetailsImpl.class);
 
-    public UserDetailsImpl(User user) {
-        super(user);
-    }
+	private static final long serialVersionUID = 4646463336527895902L;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles()
-                .stream()
-                .map(role-> new SimpleGrantedAuthority("ROLE_"+role.getName()))
-                .collect(Collectors.toList());
-    }
+	public UserDetailsImpl(User user) {
+		super(user);
+	}
 
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// System.out.println();
+		logger.info("UserDetailsImpl User: " + this);
 
-    @Override
-    public String getUsername() {
-        return super.getLogin();
-    }
+		return getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+				.collect(Collectors.toList());
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	}
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	@Override
+	public String getPassword() {
+		return super.getPassword();
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public String getUsername() {
+		return super.getLogin();
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 }

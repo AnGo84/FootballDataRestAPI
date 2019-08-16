@@ -1,14 +1,17 @@
 package ua.footballdata.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
 import ua.footballdata.model.entity.UserRole;
 
-
-@Repository
-public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
+@EnableScan
+public interface UserRoleRepository extends CrudRepository<UserRole, Long> {
 
 	UserRole findByName(String name);
+
+	List<UserRole> findAll();
 
 }

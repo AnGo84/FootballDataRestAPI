@@ -61,13 +61,21 @@ public class CompetitionController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getCompetition(@PathVariable("id") long id) {
 		logger.info("Fetching CompetitionEntity with id {}", id);
-		CompetitionEntity competitionEntity = competitionEntityService.findById(id);
-		if (competitionEntity == null) {
-			logger.error("CompetitionEntity with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("CompetitionEntity with id " + id + " not found"),
-					HttpStatus.NOT_FOUND);
+		CompetitionEntity competitionEntity = null;
+		try {
+			competitionEntity = competitionEntityService.findById(id);
+
+			if (competitionEntity == null) {
+				logger.error("CompetitionEntity with id {} not found.", id);
+				return new ResponseEntity(new CustomErrorType("CompetitionEntity with id " + id + " not found"),
+						HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<CompetitionEntity>(competitionEntity, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error("Getting data for competition {} error.", id, e);
+			return new ResponseEntity(new CustomErrorType("Getting data for competition " + id + " error. " + e.getMessage()),
+					HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<CompetitionEntity>(competitionEntity, HttpStatus.OK);
 	}
 
 	// -------------------Create a CompetitionEntity ------------------------------

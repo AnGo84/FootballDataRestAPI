@@ -1,11 +1,16 @@
 package ua.footballdata.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
 import ua.footballdata.model.entity.CompetitionEntity;
 
-@Repository
-public interface CompetitionEntityRepository extends JpaRepository<CompetitionEntity, Long> {
+//@Repository
+@EnableScan
+public interface CompetitionEntityRepository extends CrudRepository<CompetitionEntity, Long> {
 	CompetitionEntity findByName(String name);
+
+	List<CompetitionEntity> findAll();
 }

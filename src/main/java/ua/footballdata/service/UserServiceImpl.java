@@ -19,12 +19,14 @@ public class UserServiceImpl implements UserService {
 
 	public List<User> findAllUsers() {
 		logger.info("Find all users");
-		return userRepository.findAll();
+		return (List<User>) userRepository.findAll();
 	}
 
 	public User findById(long id) {
 		logger.info("Find User with ID: " + id);
-		return userRepository.getOne(id);
+
+		return userRepository.findById(id).orElse(null);
+		// return userRepository.getOne(id);
 	}
 
 	public User findByLogin(String login) {
@@ -53,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
 	public void deleteUserById(long id) {
 		logger.info("Delete User with ID: " + id);
-		userRepository.deleteById(id);
+		userRepository.deleteById(Long.valueOf(id));
 	}
 
 	public boolean isUserExist(User user) {

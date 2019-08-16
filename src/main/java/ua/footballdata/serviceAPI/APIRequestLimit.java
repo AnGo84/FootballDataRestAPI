@@ -1,141 +1,163 @@
 package ua.footballdata.serviceAPI;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.Callable;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
+import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Component;
 
-//@Component
-@Service
+@Component
+//@Service
 @Scope("application")
 public class APIRequestLimit {
-	private static final int FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT = 10;
-	private static final int FOOTBALL_API_REQUEST_SECONDS_LIMIT = 60;
+	private static final Logger logger = LoggerFactory.getLogger(AreaAppServiceImp.class);
 
-	private static final Logger logger = LoggerFactory.getLogger(APIRequestLimit.class);
+	@Value("${footballdata.response.headers.second_left_to_reset}")
+	private String headerRequestCounterReset;
+	@Value("${footballdata.response.headers.remaining_requests}")
+	private String headerRequestsAvailableMinute;
 
-	// private int requestsCount = FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT;
-	private List<Date> requestsList = new ArrayList<>();
-	// private Date lastRequest = new Date();
+	private int secondsToReset;
+	private int requestsAvailableInMinute;
 
-	/*
-	 * public APIRequestLimit() { this.requestsCount =
-	 * FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT; this.lastRequest = new Date(); }
-	 */
+	public void initByHeaders(HttpHeaders headers) {
+		secondsToReset = -1;
+		requestsAvailableInMinute = -1;
+		if (headers != null) {
+			secondsToReset = getIntValueByName(headers, headerRequestCounterReset);
+			requestsAvailableInMinute = getIntValueByName(headers, headerRequestsAvailableMinute);
+		}
+	}
 
-	/*
-	 * public int getRequestsCount() { return requestsCount; }
-	 * 
-	 * public void setRequestsCount(int requestsCount) { this.requestsCount =
-	 * requestsCount; }
-	 * 
-	 * public Date getLastRequest() { return lastRequest; }
-	 * 
-	 * public void setLastRequest(Date lastRequest) { this.lastRequest =
-	 * lastRequest; }
-	 */
+	private int getIntValueByName(HttpHeaders headers, String headerName) {
+		int intValue = -1;
 
-	public void add() {
+		if (headers != null && headers.get(headerName) != null && !headers.get(headerName).isEmpty()) {
+			String headerValue = headers.get(headerName).get(0);
+			if (headerValue != null && !headerValue.equals("")) {
+				try {
+					intValue = Integer.valueOf(headerValue);
+				} catch (Exception e) {
+					logger.error("Cannot get int value from " + headerValue);
+					checkHeaders(headers);
+				}
+			}
+		}
+		return intValue;
+	}
+
+	public APIRequestLimit(int secondsToReset, int requestsAvailableInMinute) {
+		super();
+		this.secondsToReset = secondsToReset;
+		this.requestsAvailableInMinute = requestsAvailableInMinute;
+	}
+
+	public APIRequestLimit() {
+		secondsToReset = -1;
+		requestsAvailableInMinute = -1;
+	}
+
+	public void reset() {
+		secondsToReset = -1;
+		requestsAvailableInMinute = -1;
+	}
+
+	private void checkHeaders(HttpHeaders headers) {
+		// indicates the version you are using
+		// String requestsAPIVersion =
+		// String.valueOf(headers.get("X-API-Version").get(0));
+		// Shows the detected API-client or 'anonymous'
+		// String requestsClient =
+		// String.valueOf(headers.get("X-Authenticated-Client").get(0));
+
+		// Defines the seconds left to reset your request counter.
+		// int requestsSecondsToReset =
+		// Integer.valueOf(headers.get("X-RequestCounter-Reset").get(0));
+		// Shows the remaining requests before being blocked.
+		// int requestsAvailable =
+		// Integer.valueOf(headers.get("X-Requests-Available-Minute").get(0));
+
+		// String requestsAvailable =
+		// String.valueOf(headers.get("X-Requests-Available-Minute").get(0));
+
 		/*
-		 * if (requestsCount == FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT) { skipData(); }
-		 * requestsCount++;
+		 * logger.info("X-API-Version: " + requestsAPIVersion);
+		 * logger.info("X-Authenticated-Client: " + requestsClient);
+		 * logger.info("X-RequestCounter-Reset: " + requestsSecondsToReset);
+		 * logger.info("X-Requests-Available-Minute: " + requestsSecondsToReset);
 		 */
-		if (requestsList.size() == FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT) {
-			requestsList.remove(0);
-		}
-		Date date = new Date();
-		clearOld(date);
-		requestsList.add(date);
 
-	}
-
-	private void clearOld(Date date) {
-
-		while (requestsList.size() > 0
-				&& secondsBetween(requestsList.get(0), date) > FOOTBALL_API_REQUEST_SECONDS_LIMIT) {
-			requestsList.remove(0);
+		for (Entry<String, List<String>> element : headers.entrySet()) {
+			if (element != null) {
+				logger.info("Header: " + element.getKey());
+				if (element.getValue() != null && !element.getValue().isEmpty()) {
+					for (String headerElement : element.getValue()) {
+						logger.info("	Element: " + headerElement);
+					}
+				}
+			}
 		}
 
 	}
 
-	public boolean requestAllowed() {
-		long seconds = secondsAfterLastRequest();
-		if (requestsList.size() >= FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT
-				&& seconds <= FOOTBALL_API_REQUEST_SECONDS_LIMIT) {
+	public int getSecondsToReset() {
+		return secondsToReset;
+	}
+
+	public void setSecondsToReset(int secondsToReset) {
+		this.secondsToReset = secondsToReset;
+	}
+
+	public int getRequestsAvailableInMinute() {
+		return requestsAvailableInMinute;
+	}
+
+	public void setRequestsAvailableInMinute(int requestsAvailableInMinute) {
+		this.requestsAvailableInMinute = requestsAvailableInMinute;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + requestsAvailableInMinute;
+		result = prime * result + secondsToReset;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
+		if (getClass() != obj.getClass())
+			return false;
+		APIRequestLimit other = (APIRequestLimit) obj;
+		if (requestsAvailableInMinute != other.requestsAvailableInMinute)
+			return false;
+		if (secondsToReset != other.secondsToReset)
+			return false;
 		return true;
 	}
 
-	public long secondsAfterLastRequest() {
-		/*
-		 * if (lastRequest == null) { lastRequest = new Date(); // return 61; } long
-		 * seconds = ((new Date()).getTime() - lastRequest.getTime()) / 1000;
-		 */
-		if (requestsList.size() == 0) {
-			requestsList.add(new Date());
-
-		}
-
-		long seconds = secondsBetween(requestsList.get(0), new Date());
-		return seconds;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("APIRequestLimit [headerRequestCounterReset=");
+		builder.append(headerRequestCounterReset);
+		builder.append(", headerRequestsAvailableMinute=");
+		builder.append(headerRequestsAvailableMinute);
+		builder.append(", secondsToReset=");
+		builder.append(secondsToReset);
+		builder.append(", requestsAvailableInMinute=");
+		builder.append(requestsAvailableInMinute);
+		builder.append("]");
+		return builder.toString();
 	}
 
-	private long secondsBetween(Date dateFrom, Date dateTill) {
-		return (dateTill.getTime() - dateFrom.getTime()) / 1000;
-	}
-
-	/*
-	 * public void skipData() { this.requestsCount = 0; this.lastRequest = new
-	 * Date(); }
-	 */
-
-	public void checkAndWait() {
-		if (!requestAllowed()) {
-			try {
-				/*
-				 * long x = (FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT - requestsList.size())
-				 * (FOOTBALL_API_REQUEST_SECONDS_LIMIT / FOOTBALL_API_REQUEST_PER_MINUTE_LIMIT)
-				 * + 1;
-				 */
-
-				long timeForWaiting = FOOTBALL_API_REQUEST_SECONDS_LIMIT
-						- secondsBetween(requestsList.get(0), new Date());
-				if (timeForWaiting < 0) {
-					timeForWaiting = 0;
-				}
-				// Thread.sleep(timeForWaiting * 1000 + 100);
-				getTimer(timeForWaiting * 1000 + 100).call();
-				// Thread.sleep(secondsAfterLastRequest() * 1000);
-			} catch (InterruptedException e) {
-				logger.error("Waiting error: " + e.getMessage());
-				e.printStackTrace();
-			} catch (Exception e) {
-				logger.error("Waiting error: " + e.getMessage());
-				e.printStackTrace();
-			}
-
-		}
-		add();
-	}
-
-	/*
-	 * In cause disconnect by timeout:
-	 * https://stackoverflow.com/questions/51066238/spring-server-connection-timeout
-	 * -not-working
-	 */
-	private Callable<String> getTimer(long time) throws InterruptedException {
-		return new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				Thread.sleep(time); // this will cause a timeout
-				return "Timer woke up";
-			}
-		};
-	}
 }

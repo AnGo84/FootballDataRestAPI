@@ -1,11 +1,15 @@
 package ua.footballdata.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
 import ua.footballdata.model.entity.SeasonEntity;
 
-@Repository
-public interface SeasonEntityRepository extends JpaRepository<SeasonEntity, Long> {
+//@Repository
+@EnableScan
+public interface SeasonEntityRepository extends CrudRepository<SeasonEntity, Long> {
 	// SeasonEntity findByName(String name);
+	List<SeasonEntity> findAll();
 }

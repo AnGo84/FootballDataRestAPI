@@ -2,7 +2,6 @@ package ua.footballdata.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.footballdata.model.entity.CompetitionSeasonEntity;
@@ -10,7 +9,7 @@ import ua.footballdata.repositories.CompetitionSeasonEntityRepository;
 
 @Service("competitionSeasonEntityService")
 public class CompetitionSeasonEntityService {
-	@Autowired
+	// @Autowired
 	private CompetitionSeasonEntityRepository repository;
 
 	public List<CompetitionSeasonEntity> findByCompetitionId(long id) {

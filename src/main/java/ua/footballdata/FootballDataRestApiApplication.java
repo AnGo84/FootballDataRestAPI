@@ -6,8 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootApplication(scanBasePackages = { "ua.footballdata" })
-//public class FootballDataRestApiApplication extends SpringBootServletInitializer{
+@SpringBootApplication
+//@SpringBootApplication(scanBasePackages = { "ua.footballdata" })
+
 public class FootballDataRestApiApplication extends SpringBootServletInitializer {
 
 	/*
@@ -38,4 +39,5 @@ public class FootballDataRestApiApplication extends SpringBootServletInitializer
 	protected WebApplicationContext run(SpringApplication application) {
 		return super.run(application);
 	}
+
 }

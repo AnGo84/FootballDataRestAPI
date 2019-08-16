@@ -25,8 +25,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<modelmapper.version>2.3.0</modelmapper.version>
-		<!-- <hibernate.version>4.3.11.Final</hibernate.version> -->
-		<!-- <mysql.connector.version>5.1.31</mysql.connector.version> -->
+
 	</properties>
 
 	<dependencies>
@@ -35,10 +34,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,21 +64,25 @@
 			<version>${modelmapper.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
-			</dependency> -->
-
-
 		<!-- enabling XML representations -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
+
+		<!-- Amazon DynamoDB -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.610</version>
+		</dependency>
+		<!-- Community module for DynamoDB -->
+		<dependency>
+			<groupId>com.github.derjust</groupId>
+			<artifactId>spring-data-dynamodb</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+		<!-- / DynamoDB -->
 
 	</dependencies>
 
@@ -91,16 +94,16 @@
 			<!-- https://devcenter.heroku.com/articles/java-webapp-runner#create-a-procfile -->
 
 			<!-- Need Procfile web: java -Dserver.port=$PORT -jar target/*.jar -->
-			<!-- heroku -->	
-			
+			<!-- heroku -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<!-- Java 8 for Travis-->
+				<!-- Java 8 for Travis -->
 				<configuration>
 					<release>8</release>
 				</configuration>
-				<!--  -->
+				<!-- -->
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -115,7 +118,7 @@
 									<version>9.0.11.0</version>
 									<destFileName>webapp-runner.jar</destFileName>
 								</artifactItem>
-							</artifactItems>							
+							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>

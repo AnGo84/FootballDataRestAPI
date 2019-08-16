@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import ua.footballdata.model.Area;
+import ua.footballdata.serviceAPI.APIRequestLimit;
 
 public class AreaRestServiceImpl extends AbstractRestService<Area> {
 	private static final Logger logger = LoggerFactory.getLogger(AreaRestServiceImpl.class);
+
+	@Autowired
+	private APIRequestLimit apiRequestLimit;
 
 	public AreaRestServiceImpl(String token) {
 		super(token);
@@ -29,6 +34,9 @@ public class AreaRestServiceImpl extends AbstractRestService<Area> {
 				HttpMethod.GET, this.getHttpEntitis(), Area.class);
 
 		logger.info("Get respEntity is null: " + (respEntity == null));
+
+		apiRequestLimit.initByHeaders(respEntity.getHeaders());
+
 		Area area = respEntity.getBody();
 
 		// Competition competition =
