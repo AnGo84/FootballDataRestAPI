@@ -30,8 +30,8 @@ public class CompetitionController {
 
 	public static final Logger logger = LoggerFactory.getLogger(CompetitionController.class);
 
-	@Value("${footballdata.token}")
-	private String token;
+	/*@Value("${footballdata.token}")
+	private String token;*/
 
 	@Autowired
 	private CompetitionEntityServiceImpl competitionEntityService;

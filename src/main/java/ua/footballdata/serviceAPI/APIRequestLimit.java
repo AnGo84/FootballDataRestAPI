@@ -6,11 +6,13 @@ import java.util.Map.Entry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Component;
 
-/*@Component
+@Component
 //@Service
-@Scope("application")*/
+@Scope("application")
 public class APIRequestLimit {
 	private static final Logger logger = LoggerFactory.getLogger(AreaAppServiceImp.class);
 
@@ -23,17 +25,21 @@ public class APIRequestLimit {
 	private int requestsAvailableInMinute;
 
 	public void initByHeaders(HttpHeaders headers) {
+		logger.info("initByHeaders");
 		secondsToReset = -1;
 		requestsAvailableInMinute = -1;
 		if (headers != null) {
 			secondsToReset = getIntValueByName(headers, headerRequestCounterReset);
 			requestsAvailableInMinute = getIntValueByName(headers, headerRequestsAvailableMinute);
 		}
+		logger.info("	inited secondsToReset: " + secondsToReset);
+		logger.info("	inited requestsAvailableInMinute: " + requestsAvailableInMinute);
 	}
 
 	private int getIntValueByName(HttpHeaders headers, String headerName) {
+		logger.info("headerName: " + headerName);
 		int intValue = -1;
-
+		//checkHeaders(headers);
 		if (headers != null && headers.get(headerName) != null && !headers.get(headerName).isEmpty()) {
 			String headerValue = headers.get(headerName).get(0);
 			if (headerValue != null && !headerValue.equals("")) {

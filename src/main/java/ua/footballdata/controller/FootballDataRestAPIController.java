@@ -14,14 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ua.footballdata.error.CustomErrorType;
-import ua.footballdata.model.Area;
-import ua.footballdata.model.Competition;
-import ua.footballdata.model.CompetitionMatches;
-import ua.footballdata.model.Team;
-import ua.footballdata.serviceAPI.AreaAppServiceImp;
-import ua.footballdata.serviceAPI.CompetitionAppServiceImp;
-import ua.footballdata.serviceAPI.CompetitionMatchesAppServiceImp;
-import ua.footballdata.serviceAPI.TeamAppServiceImp;
+import ua.footballdata.model.*;
+import ua.footballdata.serviceAPI.*;
 
 @RestController
 @RequestMapping("/api")
@@ -39,6 +33,8 @@ public class FootballDataRestAPIController {
 
 	@Autowired
 	private TeamAppServiceImp teamService;
+	@Autowired
+	private CompetitionTeamsAppServiceImp competitionTeamsService;
 
 	@Autowired
 	private AreaAppServiceImp areaService;
@@ -88,9 +84,9 @@ public class FootballDataRestAPIController {
 		return new ResponseEntity<CompetitionMatches>(competitionMatches, HttpStatus.OK);
 	}
 
-	// ----------Retrieve Competition's matches for current season's year --------
+	// ----------Retrieve Competition's matches for set season's year --------
 
-	@RequestMapping(value = "/competitions/{id}/matches?season= {year}", method = RequestMethod.GET)
+	@RequestMapping(value = "/competitions/{id}/matches?season={year}", method = RequestMethod.GET)
 	public ResponseEntity<?> getCompetitionMatches(@PathVariable("id") long id, @PathVariable("year") int year) {
 		logger.info("Fetching CompetitionMatches with id {} for season year {}", id, year);
 		logger.info("Token: {}", token);
@@ -104,6 +100,40 @@ public class FootballDataRestAPIController {
 					HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<CompetitionMatches>(competitionMatches, HttpStatus.OK);
+	}
+
+	// ---------Retrieve Competition's matches for current season----
+
+	@RequestMapping(value = "/competitions/{id}/teams", method = RequestMethod.GET)
+	public ResponseEntity<?> getCompetitionCurrentSeasonTeams(@PathVariable("id") long id) {
+		logger.info("Fetching CompetitionTeams with id {}", id);
+		logger.info("Token: {}", token);
+
+		CompetitionTeams competitionTeams = competitionTeamsService.findById(id);
+		if (competitionTeams == null) {
+			logger.error("Teams for Competition with id {} not found.", id);
+			return new ResponseEntity(new CustomErrorType("Teams for Competition with id " + id + " not found"),
+					HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<CompetitionTeams>(competitionTeams, HttpStatus.OK);
+	}
+
+	// ----------Retrieve Competition's teams for set season's year --------
+
+	@RequestMapping(value = "/competitions/{id}/teams?season={year}", method = RequestMethod.GET)
+	public ResponseEntity<?> getCompetitionTeams(@PathVariable("id") long id, @PathVariable("year") int year) {
+		logger.info("Fetching CompetitionTeams with id {} for season year {}", id, year);
+		logger.info("Token: {}", token);
+
+		CompetitionTeams competitionTeams = competitionTeamsService.findCompetitionTeamsForSeason(id, year);
+		if (competitionTeams == null) {
+			logger.error("Teams for Competition with id {} for season year {} not found.", id, year);
+			return new ResponseEntity(
+					new CustomErrorType(
+							"Teams for Competition with id " + id + "for season year " + year + " not found"),
+					HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<CompetitionTeams>(competitionTeams, HttpStatus.OK);
 	}
 
 	// ---------Retrieve Single Team------

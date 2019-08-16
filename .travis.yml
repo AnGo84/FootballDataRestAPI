@@ -2,6 +2,7 @@
 language: java
 jdk: oraclejdk8
 
+dist: trusty
 # Improve Build Speed https://dzone.com/articles/travis-ci-tutorial-java-projects
 
 env:
