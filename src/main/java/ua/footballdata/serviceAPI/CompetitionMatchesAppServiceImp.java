@@ -17,8 +17,6 @@ public class CompetitionMatchesAppServiceImp implements AppService<CompetitionMa
 
 	@Value("${footballdata.token}")
 	private String token;
-	@Autowired
-	private APIRequestLimit apiRequestLimit;
 
 	@Autowired
 	private APIRequestLimitCheck requestLimitCheck;
@@ -46,8 +44,9 @@ public class CompetitionMatchesAppServiceImp implements AppService<CompetitionMa
 		 * Competition competition = new Competition(); competition.setId(id);
 		 * competition.setCode("Code: " + String.valueOf(id)); return competition;
 		 */
-		requestLimitCheck.checkAndWait(apiRequestLimit);
-		return restService.findById(id);
+		CompetitionMatches competitionMatches = restService.findById(id);
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+		return competitionMatches;
 	}
 
 	public CompetitionMatches findCompetitionMatchesForSeason(long id, int year) {
@@ -55,14 +54,15 @@ public class CompetitionMatchesAppServiceImp implements AppService<CompetitionMa
 		logger.info("restService is null: {}", restService == null);
 		logger.info("Token for set: {}", token);
 		restService = new CompetitionMatchesRestServiceImpl(token);
-		requestLimitCheck.checkAndWait(apiRequestLimit);
-		return restService.findCompetitionMatchesForSeason(id, year);
+		CompetitionMatches competitionMatches = restService.findCompetitionMatchesForSeason(id, year);
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+		return competitionMatches;
 	}
 
 	@Override
 	public List<CompetitionMatches> findAllData() {
 		// TODO Auto-generated method stub
-		requestLimitCheck.checkAndWait(apiRequestLimit);
+		// requestLimitCheck.checkAndWait(apiRequestLimit);
 		return null;
 	}
 

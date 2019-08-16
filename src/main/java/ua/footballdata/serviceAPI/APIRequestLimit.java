@@ -6,13 +6,11 @@ import java.util.Map.Entry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 
-@Component
+/*@Component
 //@Service
-@Scope("application")
+@Scope("application")*/
 public class APIRequestLimit {
 	private static final Logger logger = LoggerFactory.getLogger(AreaAppServiceImp.class);
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -16,18 +15,21 @@ import ua.footballdata.serviceAPI.APIRequestLimit;
 public class CompetitionRestServiceImpl extends AbstractRestService<Competition> {
 	private static final Logger logger = LoggerFactory.getLogger(CompetitionRestServiceImpl.class);
 
-	@Autowired
 	private APIRequestLimit apiRequestLimit;
 
 	public CompetitionRestServiceImpl() {
+		apiRequestLimit = new APIRequestLimit();
 	}
 
 	public CompetitionRestServiceImpl(String token) {
 		super(token);
-
+		apiRequestLimit = new APIRequestLimit();
 		logger.info("Token: " + this.getToken());
 		logger.info("Headers: " + this.getHttpEntitis());
+	}
 
+	public APIRequestLimit getApiRequestLimit() {
+		return apiRequestLimit;
 	}
 
 	@Override

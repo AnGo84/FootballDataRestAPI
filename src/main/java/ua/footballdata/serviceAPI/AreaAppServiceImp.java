@@ -19,15 +19,11 @@ public class AreaAppServiceImp implements AppService<Area> {
 	private String token;
 
 	@Autowired
-	private APIRequestLimit apiRequestLimit;
-
-	@Autowired
 	private APIRequestLimitCheck requestLimitCheck;
 
 	private AreaRestServiceImpl restService;
 
 	public AreaAppServiceImp() {
-
 	}
 
 	public AreaAppServiceImp(String token) {
@@ -47,13 +43,14 @@ public class AreaAppServiceImp implements AppService<Area> {
 		 * Competition competition = new Competition(); competition.setId(id);
 		 * competition.setCode("Code: " + String.valueOf(id)); return competition;
 		 */
-		requestLimitCheck.checkAndWait(apiRequestLimit);
-		return restService.findById(id);
+		Area area = restService.findById(id);
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+		return area;
 	}
 
 	@Override
 	public List<Area> findAllData() {
-		requestLimitCheck.checkAndWait(apiRequestLimit);
+		// requestLimitCheck.checkAndWait(apiRequestLimit);
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -17,8 +17,6 @@ public class TeamAppServiceImp implements AppService<Team> {
 
 	@Value("${footballdata.token}")
 	private String token;
-	@Autowired
-	private APIRequestLimit apiRequestLimit;
 
 	@Autowired
 	private APIRequestLimitCheck requestLimitCheck;
@@ -46,14 +44,16 @@ public class TeamAppServiceImp implements AppService<Team> {
 		 * Competition competition = new Competition(); competition.setId(id);
 		 * competition.setCode("Code: " + String.valueOf(id)); return competition;
 		 */
-		requestLimitCheck.checkAndWait(apiRequestLimit);
-		return restService.findById(id);
+		Team team = restService.findById(id);
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+
+		return team;
 	}
 
 	@Override
 	public List<Team> findAllData() {
 		// TODO Auto-generated method stub
-		requestLimitCheck.checkAndWait(apiRequestLimit);
+		// requestLimitCheck.checkAndWait(apiRequestLimit);
 		return null;
 	}
 

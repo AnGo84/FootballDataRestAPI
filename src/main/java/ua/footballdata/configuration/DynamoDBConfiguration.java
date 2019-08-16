@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -23,6 +24,8 @@ import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 @Profile("dev")
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "ua.footballdata.repositories")
+
+@PropertySource(ignoreResourceNotFound = true, value = "classpath:application.properties")
 public class DynamoDBConfiguration {
 
 	public static final Logger logger = LoggerFactory.getLogger(DynamoDBConfiguration.class);
@@ -30,10 +33,10 @@ public class DynamoDBConfiguration {
 	@Value("${amazon.dynamodb.endpoint}")
 	private String amazonDynamoDBEndpoint;
 
-	@Value("${amazon.aws.accesskey}")
+	@Value("${amazon.dynamodb.accesskey}")
 	private String amazonDynamoDBAccessKey;
 
-	@Value("${amazon.aws.secretkey}")
+	@Value("${amazon.dynamodb.secretkey}")
 	private String amazonDynamoDBSecretKey;
 
 	/*
@@ -62,6 +65,10 @@ public class DynamoDBConfiguration {
 		// DynamoDBMapperConfig config =
 		// DynamoDBMapperConfig.builder().withConversionSchema(ConversionSchemas.V2).build();
 		// return config;
+		logger.info("dynamoDBMapperConfig: ");
+		logger.info("amazonDynamoDBEndpoint: " + amazonDynamoDBEndpoint);
+		logger.info("amazonDynamoDBAccessKey: " + amazonDynamoDBAccessKey);
+
 		return DynamoDBMapperConfig.DEFAULT;
 	}
 

@@ -19,9 +19,6 @@ public class CompetitionAppServiceImp implements AppService<Competition> {
 	private String token;
 
 	@Autowired
-	private APIRequestLimit apiRequestLimit;
-
-	@Autowired
 	private APIRequestLimitCheck requestLimitCheck;
 
 	// TODO https://www.baeldung.com/spring-autowire
@@ -49,16 +46,19 @@ public class CompetitionAppServiceImp implements AppService<Competition> {
 		 * Competition competition = new Competition(); competition.setId(id);
 		 * competition.setCode("Code: " + String.valueOf(id)); return competition;
 		 */
-		requestLimitCheck.checkAndWait(apiRequestLimit);
-		return restService.findById(id);
+		Competition competition = restService.findById(id);
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+		return competition;
 	}
 
 	@Override
 	public List<Competition> findAllData() {
 		logger.info("All competitions");
-		requestLimitCheck.checkAndWait(apiRequestLimit);
+
 		restService = new CompetitionRestServiceImpl();
-		return restService.findAllData();
+		List<Competition> list = restService.findAllData();
+		requestLimitCheck.checkAndWait(restService.getApiRequestLimit());
+		return list;
 	}
 
 }

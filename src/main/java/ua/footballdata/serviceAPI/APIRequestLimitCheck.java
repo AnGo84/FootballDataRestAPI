@@ -96,21 +96,23 @@ public class APIRequestLimitCheck {
 	 */
 
 	public void checkAndWait(APIRequestLimit apiRequestLimit) {
-		if ((apiRequestLimit.getRequestsAvailableInMinute() == 0 && (apiRequestLimit.getSecondsToReset() > 0
-				&& apiRequestLimit.getSecondsToReset() <= FOOTBALL_API_REQUEST_SECONDS_LIMIT))) {
-			try {
-				// Thread.sleep(timeForWaiting * 1000 + 100);
-				getTimer(apiRequestLimit.getSecondsToReset() * 1000 + 100).call();
+		if (apiRequestLimit != null) {
+			if (apiRequestLimit.getRequestsAvailableInMinute() == 0 && (apiRequestLimit.getSecondsToReset() > 0
+					&& apiRequestLimit.getSecondsToReset() <= FOOTBALL_API_REQUEST_SECONDS_LIMIT)) {
+				try {
+					// Thread.sleep(timeForWaiting * 1000 + 100);
+					getTimer(apiRequestLimit.getSecondsToReset() * 1000 + 100).call();
 
-				// Thread.sleep(secondsAfterLastRequest() * 1000);
-			} catch (InterruptedException e) {
-				logger.error("Waiting error: " + e.getMessage());
-				e.printStackTrace();
-			} catch (Exception e) {
-				logger.error("Waiting error: " + e.getMessage());
-				e.printStackTrace();
+					// Thread.sleep(secondsAfterLastRequest() * 1000);
+				} catch (InterruptedException e) {
+					logger.error("Waiting error: " + e.getMessage());
+					e.printStackTrace();
+				} catch (Exception e) {
+					logger.error("Waiting error: " + e.getMessage());
+					e.printStackTrace();
+				}
+
 			}
-			apiRequestLimit.reset();
 			add();
 		} else {
 			checkAndWait();
