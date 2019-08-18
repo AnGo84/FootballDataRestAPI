@@ -1,6 +1,7 @@
 package ua.footballdata.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,6 +21,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Qualifier("userDetailsServiceImpl")
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -50,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword", "/competitions**").permitAll()
+				.antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword", "/competitions/**").permitAll()
 				.antMatchers("/users/**", "/admin").hasRole("ADMIN")
 
 				.and()
@@ -90,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	// https://www.baeldung.com/security-none-filters-none-access-permitAll
 	public void configure(WebSecurity web) throws Exception {
-		// web.ignoring().antMatchers("/api**");
+		//web.ignoring().antMatchers("/api**");
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**", "/api/**");
 	}
 }

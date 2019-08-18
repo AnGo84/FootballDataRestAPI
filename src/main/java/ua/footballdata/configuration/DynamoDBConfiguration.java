@@ -65,9 +65,9 @@ public class DynamoDBConfiguration {
 		// DynamoDBMapperConfig config =
 		// DynamoDBMapperConfig.builder().withConversionSchema(ConversionSchemas.V2).build();
 		// return config;
-		logger.info("dynamoDBMapperConfig: ");
+		/*logger.info("dynamoDBMapperConfig: ");
 		logger.info("amazonDynamoDBEndpoint: " + amazonDynamoDBEndpoint);
-		logger.info("amazonDynamoDBAccessKey: " + amazonDynamoDBAccessKey);
+		logger.info("amazonDynamoDBAccessKey: " + amazonDynamoDBAccessKey);*/
 
 		return DynamoDBMapperConfig.DEFAULT;
 	}
