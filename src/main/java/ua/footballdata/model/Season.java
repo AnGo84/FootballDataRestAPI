@@ -1,42 +1,43 @@
 
 package ua.footballdata.model;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class Season {
 
-    private long id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "en_GB")
-    private Date startDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "en_GB")
-    private Date endDate;
-    private Integer currentMatchday;
-    private Team winner;
+	private long id;
+	/*
+	 * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale =
+	 * "en_GB") private Date startDate;
+	 */
+	private String startDate;
+	/*
+	 * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale =
+	 * "en_GB") private Date endDate;
+	 */
+	private String endDate;
+	private Integer currentMatchday;
+	private Team winner;
 
-    public long getId() {
-        return id;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
@@ -69,10 +70,9 @@ public class Season {
 		builder.append(currentMatchday);
 		builder.append(", winner=");
 		builder.append(winner);
+		builder.append(", matches=");
 		builder.append("]");
 		return builder.toString();
 	}
-
-    
 
 }

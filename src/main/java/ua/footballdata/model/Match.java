@@ -1,21 +1,24 @@
 package ua.footballdata.model;
 
-import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Match {
 	private int id;
 	private Season season;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
-	private Date utcDate;
+	/*
+	 * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern =
+	 * "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB") private Date utcDate;
+	 */
+	private String utcDate;
 	private String status;
 	private String matchday;
 	private String stage;
 	private String group;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB")
-	private Date lastUpdated;
+	/*
+	 * @JsonFormat(shape = JsonFormat.Shape.STRING, pattern =
+	 * "yyyy-MM-dd'T'HH:mm:ss'Z'", locale = "en_GB") private Date lastUpdated;
+	 */
+	private String lastUpdated;
 	private Score score;
 	private MatchTeam homeTeam;
 	private MatchTeam awayTeam;
@@ -35,14 +38,6 @@ public class Match {
 
 	public void setSeason(Season season) {
 		this.season = season;
-	}
-
-	public Date getUtcDate() {
-		return utcDate;
-	}
-
-	public void setUtcDate(Date utcDate) {
-		this.utcDate = utcDate;
 	}
 
 	public String getStatus() {
@@ -77,14 +72,6 @@ public class Match {
 		this.group = group;
 	}
 
-	public Date getLastUpdated() {
-		return lastUpdated;
-	}
-
-	public void setLastUpdated(Date lastUpdated) {
-		this.lastUpdated = lastUpdated;
-	}
-
 	public Score getScore() {
 		return score;
 	}
@@ -115,6 +102,22 @@ public class Match {
 
 	public void setReferees(List<Referee> referees) {
 		this.referees = referees;
+	}
+
+	public String getUtcDate() {
+		return utcDate;
+	}
+
+	public void setUtcDate(String utcDate) {
+		this.utcDate = utcDate;
+	}
+
+	public String getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(String lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 
 	@Override

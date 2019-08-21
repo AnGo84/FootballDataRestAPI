@@ -3,23 +3,20 @@ package ua.footballdata.model.mapper;
 import org.modelmapper.PropertyMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ua.footballdata.model.Match;
 import ua.footballdata.model.entity.MatchEntity;
-import ua.footballdata.service.SeasonEntityServiceImpl;
-import ua.footballdata.service.TeamEntityServiceImpl;
 
 @Component
 public class MatchMapper extends AbstractMapper<MatchEntity, Match> {
 	public static final Logger logger = LoggerFactory.getLogger(MatchMapper.class);
 
-	@Autowired
-	private SeasonEntityServiceImpl seasonService;
-
-	@Autowired
-	private TeamEntityServiceImpl teamService;
+	/*
+	 * @Autowired private SeasonEntityServiceImpl seasonService;
+	 * 
+	 * @Autowired private TeamEntityServiceImpl teamService;
+	 */
 
 	private PropertyMap<MatchEntity, Match> getEntityToDTOPropertyMap() {
 		PropertyMap<MatchEntity, Match> matchMap = new PropertyMap<MatchEntity, Match>() {
@@ -98,15 +95,14 @@ public class MatchMapper extends AbstractMapper<MatchEntity, Match> {
 		/*
 		 * if (areaService == null) { logger.error("AreaService is NULL"); }
 		 */
-		if (seasonService.isExist(dto.getSeason().getId())) {
-			matchEntity.setHomeTeam(teamService.findById(dto.getHomeTeam().getId()));
-		}
-		if (teamService.isExist(dto.getHomeTeam().getId())) {
-			matchEntity.setHomeTeam(teamService.findById(dto.getHomeTeam().getId()));
-		}
-		if (teamService.isExist(dto.getAwayTeam().getId())) {
-			matchEntity.setAwayTeam(teamService.findById(dto.getAwayTeam().getId()));
-		}
+		/*
+		 * if (seasonService.isExist(dto.getSeason().getId())) {
+		 * matchEntity.setHomeTeam(teamService.findById(dto.getHomeTeam().getId())); }
+		 * if (teamService.isExist(dto.getHomeTeam().getId())) {
+		 * matchEntity.setHomeTeam(teamService.findById(dto.getHomeTeam().getId())); }
+		 * if (teamService.isExist(dto.getAwayTeam().getId())) {
+		 * matchEntity.setAwayTeam(teamService.findById(dto.getAwayTeam().getId())); }
+		 */
 		return matchEntity;
 	}
 

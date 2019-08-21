@@ -2,19 +2,18 @@ package ua.footballdata.model.mapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ua.footballdata.model.Season;
 import ua.footballdata.model.entity.SeasonEntity;
-import ua.footballdata.service.TeamEntityServiceImpl;
 
 @Component
 public class SeasonMapper extends AbstractMapper<SeasonEntity, Season> {
 	public static final Logger logger = LoggerFactory.getLogger(SeasonMapper.class);
 
-	@Autowired
-	private TeamEntityServiceImpl teamService;
+	/*
+	 * @Autowired private TeamEntityServiceImpl teamService;
+	 */
 
 	@Override
 	public Season convertToDto(SeasonEntity entity) {
@@ -38,10 +37,12 @@ public class SeasonMapper extends AbstractMapper<SeasonEntity, Season> {
 		 * if (areaService == null) { logger.error("AreaService is NULL"); }
 		 */
 
-		if (dto.getWinner() != null && teamService.isExist(dto.getWinner().getId())) {
-
-			seasonEntity.setWinner(teamService.findById(dto.getWinner().getId()));
-		}
+		/*
+		 * if (dto.getWinner() != null && teamService.isExist(dto.getWinner().getId()))
+		 * {
+		 * 
+		 * seasonEntity.setWinner(teamService.findById(dto.getWinner().getId())); }
+		 */
 		return seasonEntity;
 	}
 

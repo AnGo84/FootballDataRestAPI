@@ -132,7 +132,9 @@ public class UsersController {
 					HttpStatus.NOT_FOUND);
 		}
 		userService.deleteUserById(id);
-		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<AppResponse>(new AppResponse("Deleted user: " + user.getLogin()),
+				HttpStatus.NO_CONTENT);
+		// return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
 
 	// ------------------- Delete All Users-----------------------------

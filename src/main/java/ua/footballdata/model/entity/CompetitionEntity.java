@@ -3,7 +3,9 @@ package ua.footballdata.model.entity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 
 //@Entity
 //@Table(name = "competitions")
@@ -23,6 +25,8 @@ public class CompetitionEntity {
 	private String emblemUrl;
 	// @Column
 	private String plan;
+	// @Column
+	private SeasonEntity currentSeason;
 	/*
 	 * @ManyToOne
 	 * 
@@ -45,6 +49,7 @@ public class CompetitionEntity {
 	}
 
 	@DynamoDBAttribute
+	@DynamoDBTyped(DynamoDBAttributeType.M)
 	public AreaEntity getArea() {
 		return area;
 	}
@@ -89,6 +94,16 @@ public class CompetitionEntity {
 		this.plan = plan;
 	}
 
+	@DynamoDBAttribute(attributeName = "currentSeason")
+	@DynamoDBTyped(DynamoDBAttributeType.M)
+	public SeasonEntity getCurrentSeason() {
+		return currentSeason;
+	}
+
+	public void setCurrentSeason(SeasonEntity currentSeason) {
+		this.currentSeason = currentSeason;
+	}
+
 	/*
 	 * public SeasonEntity getCurrentSeason() { return currentSeason; }
 	 * 
@@ -115,8 +130,9 @@ public class CompetitionEntity {
 		int result = 1;
 		result = prime * result + ((area == null) ? 0 : area.hashCode());
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + ((currentSeason == null) ? 0 : currentSeason.hashCode());
 		result = prime * result + ((emblemUrl == null) ? 0 : emblemUrl.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastUpdated == null) ? 0 : lastUpdated.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((plan == null) ? 0 : plan.hashCode());
@@ -142,12 +158,20 @@ public class CompetitionEntity {
 				return false;
 		} else if (!code.equals(other.code))
 			return false;
+		if (currentSeason == null) {
+			if (other.currentSeason != null)
+				return false;
+		} else if (!currentSeason.equals(other.currentSeason))
+			return false;
 		if (emblemUrl == null) {
 			if (other.emblemUrl != null)
 				return false;
 		} else if (!emblemUrl.equals(other.emblemUrl))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (lastUpdated == null) {
 			if (other.lastUpdated != null)
@@ -182,6 +206,8 @@ public class CompetitionEntity {
 		builder.append(emblemUrl);
 		builder.append(", plan=");
 		builder.append(plan);
+		builder.append(", currentSeason=");
+		builder.append(currentSeason);
 		builder.append(", lastUpdated=");
 		builder.append(lastUpdated);
 		builder.append("]");

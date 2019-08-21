@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import ua.footballdata.model.Competition;
 import ua.footballdata.model.entity.CompetitionEntity;
 import ua.footballdata.model.mapper.CompetitionMapper;
 import ua.footballdata.service.CompetitionEntityServiceImpl;
-import ua.footballdata.service.UpdateFromAPIService;
+import ua.footballdata.service.UpdateDynamoDBFromAPIService;
 import ua.footballdata.serviceAPI.CompetitionAppServiceImp;
 
 @RestController
@@ -30,15 +29,16 @@ public class CompetitionController {
 
 	public static final Logger logger = LoggerFactory.getLogger(CompetitionController.class);
 
-	/*@Value("${footballdata.token}")
-	private String token;*/
+	/*
+	 * @Value("${footballdata.token}") private String token;
+	 */
 
 	@Autowired
 	private CompetitionEntityServiceImpl competitionEntityService;
 	@Autowired
 	private CompetitionAppServiceImp competitionAPIService;
 	@Autowired
-	private UpdateFromAPIService updateFromAPIService;
+	private UpdateDynamoDBFromAPIService updateFromAPIService;
 
 	//
 	@Autowired
@@ -73,7 +73,8 @@ public class CompetitionController {
 			return new ResponseEntity<CompetitionEntity>(competitionEntity, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("Getting data for competition {} error.", id, e);
-			return new ResponseEntity(new CustomErrorType("Getting data for competition " + id + " error. " + e.getMessage()),
+			return new ResponseEntity(
+					new CustomErrorType("Getting data for competition " + id + " error. " + e.getMessage()),
 					HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -125,15 +126,17 @@ public class CompetitionController {
 	public ResponseEntity<?> delete(@PathVariable("id") long id) {
 		logger.info("Fetching & Deleting CompetitionEntity with id {}", id);
 
-		CompetitionEntity user = competitionEntityService.findById(id);
-		if (user == null) {
+		CompetitionEntity entity = competitionEntityService.findById(id);
+		if (entity == null) {
 			logger.error("Unable to delete. CompetitionEntity with id {} not found.", id);
 			return new ResponseEntity(
 					new CustomErrorType("Unable to delete. Competition with id " + id + " not found."),
 					HttpStatus.NOT_FOUND);
 		}
 		competitionEntityService.deleteById(id);
-		return new ResponseEntity<CompetitionEntity>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<AppResponse>(new AppResponse("Deleted Competition: " + entity.getName()),
+				HttpStatus.NO_CONTENT);
+		// return new ResponseEntity<CompetitionEntity>(HttpStatus.NO_CONTENT);
 	}
 
 	// ------------ Update a CompetitionEntity from API --------------------
@@ -163,7 +166,8 @@ public class CompetitionController {
 		 */
 
 		try {
-			updateFromAPIService.updateCompetitionWithMatches(id);
+			// updateFromAPIService.updateCompetitionWithMatches(id);
+			updateFromAPIService.updateCompetitionById(id);
 		} catch (CustomErrorType e) {
 			logger.error("Update Competition with id {} from API error {}.", id, e.getMessage());
 			return new ResponseEntity(
