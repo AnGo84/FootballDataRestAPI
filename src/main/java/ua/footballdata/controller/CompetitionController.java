@@ -1,5 +1,6 @@
 package ua.footballdata.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import ua.footballdata.error.CustomErrorType;
 import ua.footballdata.model.Competition;
 import ua.footballdata.model.entity.CompetitionEntity;
+import ua.footballdata.model.entity.SeasonEntity;
 import ua.footballdata.model.mapper.CompetitionMapper;
 import ua.footballdata.service.CompetitionEntityServiceImpl;
 import ua.footballdata.service.UpdateDynamoDBFromAPIService;
@@ -178,4 +180,19 @@ public class CompetitionController {
 		return new ResponseEntity<CompetitionEntity>(competitionEntity, HttpStatus.OK);
 	}
 
+	// ----------- Retrieve All CompetitionEntities-------------------------------
+
+	@RequestMapping(value = { "/currentseasons" }, method = RequestMethod.GET)
+	public ResponseEntity<List<SeasonEntity>> listOfCurrentSeasons() {
+		List<CompetitionEntity> competitions = competitionEntityService.findAll();
+		if (competitions.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		List<SeasonEntity> seasons = new ArrayList<>();
+		competitions.forEach(item->{
+			seasons.add(item.getCurrentSeason());
+		});
+		return new ResponseEntity<List<SeasonEntity>>(seasons, HttpStatus.OK);
+	}
 }
