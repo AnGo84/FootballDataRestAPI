@@ -1,14 +1,22 @@
 package ua.footballdata.model.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 //@Entity
 //@Table(name = "matches")
 @DynamoDBTable(tableName = "matches")
+@JsonRootName("match")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "match")
 public class MatchEntity {
 	// @Id
 	// @Column

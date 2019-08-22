@@ -65,10 +65,10 @@
 		</dependency>
 
 		<!-- enabling XML representations -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- Amazon DynamoDB -->
 		<dependency>

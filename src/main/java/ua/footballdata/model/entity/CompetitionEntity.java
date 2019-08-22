@@ -3,15 +3,22 @@ package ua.footballdata.model.entity;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 //@Entity
 //@Table(name = "competitions")
 @DynamoDBTable(tableName = "competitions")
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CompetitionEntity {
 	// @Id
 	// @Column
@@ -40,6 +47,8 @@ public class CompetitionEntity {
 	// @Temporal(TemporalType.DATE)
 	private String lastUpdated;
 
+	@XmlElement(name = "seasons")
+	@JsonProperty("seasons")
 	private List<SeasonEntity> seasons = null;
 
 	@DynamoDBHashKey(attributeName = "id")
@@ -129,6 +138,7 @@ public class CompetitionEntity {
 	}
 
 	@DynamoDBAttribute(attributeName = "seasons")
+	@DynamoDBTyped(DynamoDBAttributeType.L)
 	public List<SeasonEntity> getSeasons() {
 		return seasons;
 	}
