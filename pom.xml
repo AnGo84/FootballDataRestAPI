@@ -100,9 +100,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<!-- Java 8 for Travis -->
-				<configuration>
+				<!--<configuration>
 					<release>8</release>
-				</configuration>
+				</configuration>-->
 				<!-- -->
 				<executions>
 					<execution>
