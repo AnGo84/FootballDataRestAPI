@@ -52,8 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword", "/competitions/**").permitAll()
-				.antMatchers("/users/**", "/admin").hasRole("ADMIN")
+				.antMatchers("/user/**", "/logout", "/forgotPassword", "/resetPassword", "/competitions/**",
+						"/areas/**", "/seasons/**", "/teams/**", "/gambles**", "/gamblerules/**", "/gambleusers/**")
+
+				.permitAll().antMatchers("/users/**", "/admin").hasRole("ADMIN")
 
 				.and()
 
@@ -92,7 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	// https://www.baeldung.com/security-none-filters-none-access-permitAll
 	public void configure(WebSecurity web) throws Exception {
-		//web.ignoring().antMatchers("/api**");
+		// web.ignoring().antMatchers("/api**");
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**", "/api/**");
 	}
 }

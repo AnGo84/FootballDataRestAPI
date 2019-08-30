@@ -13,5 +13,5 @@ public interface GambleRuleEntityRepository extends CrudRepository<GambleRuleEnt
 
 	List<GambleRuleEntity> findAll();
 
-	// List<GambleRuleEntity> findByActive(boolean active);
+	List<GambleRuleEntity> findByActive(Boolean active);
 }

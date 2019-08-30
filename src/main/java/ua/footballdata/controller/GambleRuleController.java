@@ -42,7 +42,7 @@ public class GambleRuleController {
 	@RequestMapping(value = { "/active={active}" }, method = RequestMethod.GET)
 	public ResponseEntity<?> listAllGambleRulesByActive(@PathVariable("active") boolean active) {
 		logger.info("Fetching GambleRuleEntities with active {}", active);
-		List<GambleRuleEntity> entitiesList = entityService.findAllByActive(active);
+		List<GambleRuleEntity> entitiesList = entityService.findByActive(active);
 		if (entitiesList == null || entitiesList.isEmpty()) {
 			logger.info("GambleRuleEntities with active {} is null or empty", active);
 			// return new ResponseEntity(HttpStatus.NO_CONTENT);

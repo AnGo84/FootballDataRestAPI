@@ -1,8 +1,6 @@
 package ua.footballdata.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,18 +48,18 @@ public class GambleRuleEntityServiceImpl implements CommonService<GambleRuleEnti
 		return repository.findAll();
 	}
 
-	public List<GambleRuleEntity> findAllByActive(boolean active) {
+	public List<GambleRuleEntity> findByActive(boolean active) {
 		logger.info("Active: {}", active);
-		List<GambleRuleEntity> list = repository.findAll();
-
-		List<GambleRuleEntity> filteredList = list.stream().filter(s -> s.isActive() == active)
-				.collect(Collectors.toList());
-		logger.info("Get filteredList: {}", filteredList);
-		if (filteredList == null) {
-			logger.info("Get filteredList null");
-			return new ArrayList<>();
-		}
-		return filteredList;
+		return repository.findByActive(active);
+		/*
+		 * List<GambleRuleEntity> list = repository.findAll();
+		 * 
+		 * List<GambleRuleEntity> filteredList = list.stream().filter(s -> s.isActive()
+		 * == active) .collect(Collectors.toList()); logger.info("Get filteredList: {}",
+		 * filteredList); if (filteredList == null) {
+		 * logger.info("Get filteredList null"); return new ArrayList<>(); } return
+		 * filteredList;
+		 */
 		/*
 		 * } catch (Exception e) { logger.error("Error: " + e.getMessage(), e); return
 		 * null; }
