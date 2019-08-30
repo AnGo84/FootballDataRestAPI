@@ -22,6 +22,26 @@ public class UserServiceImpl implements UserService {
 		return (List<User>) userRepository.findAll();
 	}
 
+	public List<User> findAllUsersByActive(boolean active) {
+		logger.info("Find all users by active: " + active);
+		/*
+		 * List<User> list = findAllUsers();
+		 * 
+		 * List<User> filteredList = list.stream().filter(s -> s.isActive() ==
+		 * active).collect(Collectors.toList()); logger.info("Get filteredList: {}",
+		 * filteredList); if (filteredList == null) {
+		 * logger.info("Get filteredList null"); return new ArrayList<>(); } return
+		 * filteredList;
+		 */
+		/*
+		 * if (active) { return userRepository.findByActive("true"); } else { return
+		 * userRepository.findByActive("false"); }
+		 */
+		// return userRepository.findByActive(active);
+		return userRepository.findByActive(active);
+
+	}
+
 	public User findById(long id) {
 		logger.info("Find User with ID: " + id);
 

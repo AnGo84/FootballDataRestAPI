@@ -8,73 +8,72 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ua.footballdata.error.CustomErrorType;
-import ua.footballdata.model.Area;
-import ua.footballdata.model.entity.AreaEntity;
-import ua.footballdata.model.mapper.AreaMapper;
-import ua.footballdata.service.AreaEntityServiceImpl;
-import ua.footballdata.service.UpdateDynamoDBFromAPIService;
-import ua.footballdata.serviceAPI.AreaAppServiceImp;
+import ua.footballdata.model.entity.CompetitionEntity;
+import ua.footballdata.model.entity.GambleCompetition;
+import ua.footballdata.model.mapper.GambleCompetitionMapper;
+import ua.footballdata.service.CompetitionEntityServiceImpl;
 
 @RestController
-@RequestMapping("/areas")
-public class AreaController {
+@RequestMapping("/gamblecompetitions")
+public class GambleCompetitionController {
 
-	public static final Logger logger = LoggerFactory.getLogger(AreaController.class);
-
-	/*
-	 * @Value("${footballdata.token}") private String token;
-	 */
+	public static final Logger logger = LoggerFactory.getLogger(GambleCompetitionController.class);
 
 	@Autowired
-	private AreaEntityServiceImpl entityService;
-	@Autowired
-	private AreaAppServiceImp appAPIService;
-	@Autowired
-	private UpdateDynamoDBFromAPIService updateFromAPIService;
-
+	private CompetitionEntityServiceImpl competitionService;
 	//
 	@Autowired
-	private AreaMapper mapper;
+	private GambleCompetitionMapper mapper;
 
-	// ----------- Retrieve All AreaEntities-------------------------------
+	// ----------- Retrieve All GambleCompetitionEntities--------------------------
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
-	public ResponseEntity<List<AreaEntity>> listAllAreas() {
-		List<AreaEntity> entitiesList = entityService.findAll();
-		if (entitiesList.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-			// You many decide to return HttpStatus.NOT_FOUND
+	public ResponseEntity<List<GambleCompetition>> listAllGambleCompetitions() {
+		logger.error("Get All Active Competitions for Gamble.");
+		List<CompetitionEntity> competitionsList = competitionService.findAll();
+
+		if (competitionsList == null || competitionsList.isEmpty()) {
+			logger.error("Active App Competitions not found.");
+			return new ResponseEntity(new CustomErrorType("Active App Competitions not found"), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<List<AreaEntity>>(entitiesList, HttpStatus.OK);
+
+		List<GambleCompetition> gambleCompetitionsList = new ArrayList<>();
+		competitionsList.forEach(competition -> gambleCompetitionsList.add(mapper.convertToEntity(competition)));
+
+		/*
+		 * for (Area area : areas) { AreaEntity areaEntity =
+		 * mapper.convertToEntity(area); gambleUsersList.add(areaEntity); }
+		 */
+
+		if (gambleCompetitionsList.isEmpty()) {
+			return new ResponseEntity(new CustomErrorType("Convertion Gamble Competitions not found"),
+					HttpStatus.NOT_FOUND);
+			// return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<GambleCompetition>>(gambleCompetitionsList, HttpStatus.OK);
 	}
 
-	// ------------ Retrieve Single AreaEntity-------------------------------
+	// ------------ Retrieve Single GambleUserEntity-------------------------------
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getArea(@PathVariable("id") long id) {
-		logger.info("Fetching AreaEntity with id {}", id);
-		AreaEntity entity = null;
-		try {
-			entity = entityService.findById(id);
-
-			if (entity == null) {
-				logger.error("AreaEntity with id {} not found.", id);
-				return new ResponseEntity(new CustomErrorType("AreaEntity with id " + id + " not found"),
-						HttpStatus.NOT_FOUND);
-			}
-			return new ResponseEntity<AreaEntity>(entity, HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error("Getting data for Area {} error.", id, e);
-			return new ResponseEntity(new CustomErrorType("Getting data for Area " + id + " error. " + e.getMessage()),
-					HttpStatus.BAD_REQUEST);
-		}
-	}
+	/*
+	 * @RequestMapping(value = "/{id}", method = RequestMethod.GET) public
+	 * ResponseEntity<?> getGambleUser(@PathVariable("id") long id) {
+	 * logger.info("Fetching AreaEntity with id {}", id); AreaEntity entity = null;
+	 * try { entity = entityService.findById(id);
+	 * 
+	 * if (entity == null) { logger.error("AreaEntity with id {} not found.", id);
+	 * return new ResponseEntity(new CustomErrorType("AreaEntity with id " + id +
+	 * " not found"), HttpStatus.NOT_FOUND); } return new
+	 * ResponseEntity<AreaEntity>(entity, HttpStatus.OK); } catch (Exception e) {
+	 * logger.error("Getting data for Area {} error.", id, e); return new
+	 * ResponseEntity(new CustomErrorType("Getting data for Area " + id + " error. "
+	 * + e.getMessage()), HttpStatus.BAD_REQUEST); } }
+	 */
 
 	// -------------------Create a AreaEntity ------------------------------
 
@@ -135,34 +134,31 @@ public class AreaController {
 
 	// ------------ Update all AreaEntity from API --------------------
 
-	@RequestMapping(value = { "/updatefromapi", "/updatefromapi/" }, method = RequestMethod.GET)
-	public ResponseEntity<?> updateAreasFromAPI() {
-		logger.info("Update Areas from API");
-
-		List<Area> areas = appAPIService.findAllData();
-
-		if (areas == null || areas.isEmpty()) {
-			logger.error("Areas not found.");
-			return new ResponseEntity(new CustomErrorType("Areas not found"), HttpStatus.NOT_FOUND);
-		}
-
-		List<AreaEntity> areaEntities = new ArrayList<AreaEntity>();
-		for (Area area : areas) {
-			AreaEntity areaEntity = mapper.convertToEntity(area);
-			areaEntities.add(areaEntity);
-		}
-
-		try {
-			updateFromAPIService.updateAreasList(areaEntities);
-		} catch (CustomErrorType e) {
-			logger.error("Update Areas list from API error: {}.", e.getMessage());
-			return new ResponseEntity(new CustomErrorType("Update Areas list from API error: " + e.getMessage()),
-					HttpStatus.UNPROCESSABLE_ENTITY);
-		}
-
-		return new ResponseEntity<AppResponse>(new AppResponse("Added Areas list. Size: " + areaEntities.size()),
-				HttpStatus.NO_CONTENT);
-	}
+	/*
+	 * @RequestMapping(value = { "/updatefromapi", "/updatefromapi/" }, method =
+	 * RequestMethod.GET) public ResponseEntity<?> updateAreasFromAPI() {
+	 * logger.info("Update Areas from API");
+	 * 
+	 * List<Area> areas = appAPIService.findAllData();
+	 * 
+	 * if (areas == null || areas.isEmpty()) { logger.error("Areas not found.");
+	 * return new ResponseEntity(new CustomErrorType("Areas not found"),
+	 * HttpStatus.NOT_FOUND); }
+	 * 
+	 * List<AreaEntity> areaEntities = new ArrayList<AreaEntity>(); for (Area area :
+	 * areas) { AreaEntity areaEntity = mapper.convertToEntity(area);
+	 * areaEntities.add(areaEntity); }
+	 * 
+	 * try { updateFromAPIService.updateAreasList(areaEntities); } catch
+	 * (CustomErrorType e) { logger.error("Update Areas list from API error: {}.",
+	 * e.getMessage()); return new ResponseEntity(new
+	 * CustomErrorType("Update Areas list from API error: " + e.getMessage()),
+	 * HttpStatus.UNPROCESSABLE_ENTITY); }
+	 * 
+	 * return new ResponseEntity<AppResponse>(new
+	 * AppResponse("Added Areas list. Size: " + areaEntities.size()),
+	 * HttpStatus.NO_CONTENT); }
+	 */
 	// ------------ Update a AreaEntity from API --------------------
 
 	/*
