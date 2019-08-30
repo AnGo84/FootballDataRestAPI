@@ -1,23 +1,23 @@
 package ua.footballdata.model.entity;
 
-public class Stage {
+public class GambleStage {
 	private int id;
 	private String name;
 	private boolean active;
 
-	public Stage() {
+	public GambleStage() {
 		super();
 		active = true;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Stage(int id, String name) {
+	public GambleStage(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public Stage(int id, String name, boolean active) {
+	public GambleStage(int id, String name, boolean active) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,7 +66,7 @@ public class Stage {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Stage other = (Stage) obj;
+		GambleStage other = (GambleStage) obj;
 		if (active != other.active)
 			return false;
 

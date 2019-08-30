@@ -1,7 +1,7 @@
 package ua.footballdata.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +19,7 @@ import ua.footballdata.model.CompetitionTeams;
 import ua.footballdata.model.Match;
 import ua.footballdata.model.Season;
 import ua.footballdata.model.Team;
-import ua.footballdata.model.entity.AreaEntity;
-import ua.footballdata.model.entity.CompetitionEntity;
-import ua.footballdata.model.entity.CompetitionSeasonEntity;
-import ua.footballdata.model.entity.MatchEntity;
-import ua.footballdata.model.entity.SeasonEntity;
-import ua.footballdata.model.entity.TeamEntity;
+import ua.footballdata.model.entity.*;
 import ua.footballdata.model.mapper.AreaMapper;
 import ua.footballdata.model.mapper.CompetitionMapper;
 import ua.footballdata.model.mapper.MatchMapper;
@@ -35,6 +30,7 @@ import ua.footballdata.serviceAPI.CompetitionAppServiceImp;
 import ua.footballdata.serviceAPI.CompetitionMatchesAppServiceImp;
 import ua.footballdata.serviceAPI.CompetitionTeamsAppServiceImp;
 import ua.footballdata.serviceAPI.TeamAppServiceImp;
+import ua.footballdata.utils.DateTimeUtils;
 
 @Service("updateDynamoDBFromAPIService")
 public class UpdateDynamoDBFromAPIService {
@@ -183,13 +179,46 @@ public class UpdateDynamoDBFromAPIService {
 				seasonEntity.setWinner(teamEntity);
 			}
 			seasonEntity.setMatches(getCompetitionSeasonMatches(competitionId, null, teamEntities));
-
+			seasonEntity.setStages( getSeasonStagesList(seasonEntity));
 			seasonEntityServiceImpl.update(seasonEntity);
 
 			return true;
 		}
 		return false;
 	}
+
+	private List<SeasonStage> getSeasonStagesList(SeasonEntity season) {
+		if (season == null || season.getMatches() == null || season.getMatches().isEmpty()) {
+			return null;
+		}
+		Map<String, Stage> map = new HashMap<>();
+
+		for (MatchEntity match : season.getMatches()) {
+			if (map.containsKey(match.getStage())) {
+				Stage stage = map.get(match.getStage());
+				if (stage.getFrom().compareTo(DateTimeUtils.getDateFromString(match.getUtcDate())) > 0) {
+					stage.setFrom(DateTimeUtils.getDateFromString(match.getUtcDate()));
+				} else if (stage.getTill().compareTo(DateTimeUtils.getDateFromString(match.getUtcDate())) < 0) {
+					stage.setTill(DateTimeUtils.getDateFromString(match.getUtcDate()));
+				}
+			} else {
+				map.put(match.getStage(),
+						new Stage(match.getStage(),DateTimeUtils.getDateFromString(match.getUtcDate()), DateTimeUtils.getDateFromString(match.getUtcDate())));
+			}
+		}
+
+		List<Stage> stagesList = map.values().stream().sorted(Comparator.comparing(Stage::getFrom))
+				.collect(Collectors.toList());
+		int i = 0;
+		List<SeasonStage> seasonStagesList= new ArrayList<>();
+		for (Stage stage : stagesList) {
+			stage.setId(i++);
+			seasonStagesList.add(new SeasonStage(stage.id,stage.name));
+		}
+
+		return seasonStagesList;
+	}
+
 
 	private TeamEntity findTeamEntity(long teamId, List<TeamEntity> teamEntities) {
 		TeamEntity teamEntity = teamEntities.stream().filter(team -> team.getId() == teamId).findAny().orElse(null);
@@ -335,5 +364,52 @@ public class UpdateDynamoDBFromAPIService {
 		// updateCompetitionMatches(id);
 		return true;
 	}
+	/* Inner class*/
+	class Stage{
+		private int id;
+		private String name;
+		private Date from;
+		private Date till;
 
+		public Stage() {
+		}
+
+		public Stage(String name, Date from, Date till) {
+			this.name = name;
+			this.from = from;
+			this.till = till;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public Date getFrom() {
+			return from;
+		}
+
+		public void setFrom(Date from) {
+			this.from = from;
+		}
+
+		public Date getTill() {
+			return till;
+		}
+
+		public void setTill(Date till) {
+			this.till = till;
+		}
+	}
 }
