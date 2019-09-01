@@ -15,6 +15,7 @@ public class GambleStage {
 		super();
 		this.id = id;
 		this.name = name;
+		this.active = true;
 	}
 
 	public GambleStage(int id, String name, boolean active) {

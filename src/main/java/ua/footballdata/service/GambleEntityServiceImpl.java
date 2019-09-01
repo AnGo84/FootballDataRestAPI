@@ -51,7 +51,7 @@ public class GambleEntityServiceImpl implements CommonService<GambleEntity> {
 	public List<GambleEntity> findAllByActive(boolean active) {
 		logger.info("Active: {}", active);
 		List<GambleEntity> list = repository.findByActive(active);
-		logger.info("Active list: {}", list);
+		//logger.info("Active list: {}", list);
 		/*
 		 * List<GambleRuleEntity> filteredList = list.stream().filter(s -> s.isActive()
 		 * == active) .collect(Collectors.toList()); logger.info("Get filteredList: {}",

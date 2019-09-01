@@ -105,7 +105,7 @@ public class SeasonEntity {
 
 
 	@DynamoDBAttribute(attributeName = "stages")
-	//@DynamoDBTyped(DynamoDBAttributeType.L)
+	@DynamoDBTyped(DynamoDBAttributeType.L)
 	public List<SeasonStage> getStages() {
 		return stages;
 	}
