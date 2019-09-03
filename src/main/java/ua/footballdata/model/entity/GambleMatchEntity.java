@@ -8,14 +8,14 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 
 @DynamoDBTable(tableName = "gamble_matches")
-public class GambleMatch {
+public class GambleMatchEntity {
 	private String id;
 	private Long gambleId;
 	private Long competitionId;
 	private Long seasonId;
 	private Long matchId;
 	private MatchEntity match;
-	private String state;
+	private String stage;
 	private Long userId;
 	private GambleUser user;
 	private GambleRuleEntity rule;
@@ -84,13 +84,12 @@ public class GambleMatch {
 	}
 
 	@DynamoDBAttribute
-	@DynamoDBTyped(DynamoDBAttributeType.M)
-	public String getState() {
-		return state;
+	public String getStage() {
+		return stage;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setStage(String stage) {
+		this.stage = stage;
 	}
 
 	@DynamoDBAttribute
@@ -202,7 +201,7 @@ public class GambleMatch {
 		result = prime * result + ((scorePenaltiesAwayTeam == null) ? 0 : scorePenaltiesAwayTeam.hashCode());
 		result = prime * result + ((scorePenaltiesHomeTeam == null) ? 0 : scorePenaltiesHomeTeam.hashCode());
 		result = prime * result + ((seasonId == null) ? 0 : seasonId.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((stage == null) ? 0 : stage.hashCode());
 		result = prime * result + ((total == null) ? 0 : total.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
@@ -217,7 +216,7 @@ public class GambleMatch {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GambleMatch other = (GambleMatch) obj;
+		GambleMatchEntity other = (GambleMatchEntity) obj;
 		if (competitionId == null) {
 			if (other.competitionId != null)
 				return false;
@@ -283,10 +282,10 @@ public class GambleMatch {
 				return false;
 		} else if (!seasonId.equals(other.seasonId))
 			return false;
-		if (state == null) {
-			if (other.state != null)
+		if (stage == null) {
+			if (other.stage != null)
 				return false;
-		} else if (!state.equals(other.state))
+		} else if (!stage.equals(other.stage))
 			return false;
 		if (total == null) {
 			if (other.total != null)
@@ -321,8 +320,8 @@ public class GambleMatch {
 		builder.append(matchId);
 		builder.append(", match=");
 		builder.append(match);
-		builder.append(", state=");
-		builder.append(state);
+		builder.append(", stage=");
+		builder.append(stage);
 		builder.append(", userId=");
 		builder.append(userId);
 		builder.append(", user=");

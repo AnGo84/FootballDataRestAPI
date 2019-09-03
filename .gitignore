@@ -24,5 +24,7 @@
 /.nb-gradle/
 /build/
 
+
 ### APP ##
 /logs/
+

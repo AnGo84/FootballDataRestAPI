@@ -25,7 +25,7 @@ public class GambleRuleController {
 	@Autowired
 	private GambleRuleEntityServiceImpl entityService;
 
-	// ----------- Retrieve All GambleRulenEntities-------------------------------
+	// ----------- Retrieve All GambleRulesEntities-------------------------------
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ResponseEntity<List<GambleRuleEntity>> listAllGambleRules() {
@@ -37,7 +37,7 @@ public class GambleRuleController {
 		return new ResponseEntity<List<GambleRuleEntity>>(entitiesList, HttpStatus.OK);
 	}
 
-	// ----------- Retrieve All active GambleRulenEntities-------------------------
+	// ----------- Retrieve All active GambleRulesEntities-------------------------
 
 	@RequestMapping(value = { "/active={active}" }, method = RequestMethod.GET)
 	public ResponseEntity<?> listAllGambleRulesByActive(@PathVariable("active") boolean active) {

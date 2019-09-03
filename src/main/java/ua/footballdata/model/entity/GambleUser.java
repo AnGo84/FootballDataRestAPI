@@ -1,5 +1,8 @@
 package ua.footballdata.model.entity;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
+@DynamoDBDocument
 public class GambleUser {
 
 	private Long id;

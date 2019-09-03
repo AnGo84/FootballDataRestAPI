@@ -34,7 +34,7 @@ public class GambleCompetitionController {
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ResponseEntity<List<GambleCompetition>> listAllGambleCompetitions() {
-		logger.error("Get All Active Competitions for Gamble.");
+		logger.info("Get All Active Competitions for Gamble.");
 		List<CompetitionEntity> competitionsList = competitionService.findAll();
 
 		if (competitionsList == null || competitionsList.isEmpty()) {

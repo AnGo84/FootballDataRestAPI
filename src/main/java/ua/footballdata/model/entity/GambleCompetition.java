@@ -2,12 +2,15 @@ package ua.footballdata.model.entity;
 
 import java.util.List;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
+@DynamoDBDocument
 public class GambleCompetition {
 	private Long id;
 	private Long gambleId;
 	private Long seasonId;
 	private String name;
-	private List<Stage> stages;
+	private List<GambleStage> stages;
 
 	public Long getId() {
 		return id;
@@ -41,11 +44,11 @@ public class GambleCompetition {
 		this.name = name;
 	}
 
-	public List<Stage> getStages() {
+	public List<GambleStage> getStages() {
 		return stages;
 	}
 
-	public void setStages(List<Stage> stages) {
+	public void setStages(List<GambleStage> stages) {
 		this.stages = stages;
 	}
 

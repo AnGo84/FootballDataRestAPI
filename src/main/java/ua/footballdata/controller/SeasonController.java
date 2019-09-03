@@ -28,7 +28,7 @@ public class SeasonController {
 	// ----------- Retrieve All SeasonEntities-------------------------------
 
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
-	public ResponseEntity<List<SeasonEntity>> listAllSeacons() {
+	public ResponseEntity<List<SeasonEntity>> listAllSeasons() {
 		List<SeasonEntity> seasons = seasonEntityService.findAll();
 		if (seasons.isEmpty()) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -40,7 +40,7 @@ public class SeasonController {
 	// ------------ Retrieve Single SeasonEntity-------------------------------
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getSeacon(@PathVariable("id") long id) {
+	public ResponseEntity<?> getSeasonById(@PathVariable("id") long id) {
 		logger.info("Fetching SeasonEntity with id {}", id);
 		SeasonEntity seasonEntity = null;
 		try {

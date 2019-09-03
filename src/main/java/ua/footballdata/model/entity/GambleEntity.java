@@ -13,8 +13,8 @@ public class GambleEntity {
 	private Long id;
 	private String name;
 	private String description;
-	private boolean active;
-	private List<GambleCompetition> competitons;
+	private Boolean active;
+	private List<GambleCompetition> competitions;
 	private List<GambleUser> participants;
 	private GambleRuleEntity rule;
 
@@ -47,24 +47,26 @@ public class GambleEntity {
 
 	@DynamoDBAttribute
 	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
-	public boolean isActive() {
+	public Boolean isActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
 	@DynamoDBAttribute(attributeName = "competitions")
-	public List<GambleCompetition> getCompetitons() {
-		return competitons;
+	@DynamoDBTyped(DynamoDBAttributeType.L)
+	public List<GambleCompetition> getCompetitions() {
+		return competitions;
 	}
 
-	public void setCompetitons(List<GambleCompetition> competitons) {
-		this.competitons = competitons;
+	public void setCompetitions(List<GambleCompetition> competitons) {
+		this.competitions = competitons;
 	}
 
 	@DynamoDBAttribute(attributeName = "users")
+	@DynamoDBTyped(DynamoDBAttributeType.L)
 	public List<GambleUser> getParticipants() {
 		return participants;
 	}
@@ -73,7 +75,8 @@ public class GambleEntity {
 		this.participants = participants;
 	}
 
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "rule")
+	@DynamoDBTyped(DynamoDBAttributeType.M)
 	public GambleRuleEntity getRule() {
 		return rule;
 	}
@@ -93,8 +96,8 @@ public class GambleEntity {
 		builder.append(description);
 		builder.append(", active=");
 		builder.append(active);
-		builder.append(", competitons=");
-		builder.append(competitons);
+		builder.append(", competitions=");
+		builder.append(competitions);
 		builder.append(", participants=");
 		builder.append(participants);
 		builder.append(", rule=");
