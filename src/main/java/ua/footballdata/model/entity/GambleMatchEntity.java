@@ -12,6 +12,7 @@ public class GambleMatchEntity {
 	private String id;
 	private Long gambleId;
 	private Long competitionId;
+	private String competitionName;
 	private Long seasonId;
 	private Long matchId;
 	private MatchEntity match;
@@ -53,6 +54,15 @@ public class GambleMatchEntity {
 
 	public void setCompetitionId(Long competitionId) {
 		this.competitionId = competitionId;
+	}
+
+	@DynamoDBAttribute(attributeName = "competition_name")
+	public String getCompetitionName() {
+		return competitionName;
+	}
+
+	public void setCompetitionName(String competitionName) {
+		this.competitionName = competitionName;
 	}
 
 	@DynamoDBAttribute
@@ -189,6 +199,7 @@ public class GambleMatchEntity {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((competitionId == null) ? 0 : competitionId.hashCode());
+		result = prime * result + ((competitionName == null) ? 0 : competitionName.hashCode());
 		result = prime * result + ((gambleId == null) ? 0 : gambleId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((match == null) ? 0 : match.hashCode());
@@ -221,6 +232,11 @@ public class GambleMatchEntity {
 			if (other.competitionId != null)
 				return false;
 		} else if (!competitionId.equals(other.competitionId))
+			return false;
+		if (competitionName == null) {
+			if (other.competitionName != null)
+				return false;
+		} else if (!competitionName.equals(other.competitionName))
 			return false;
 		if (gambleId == null) {
 			if (other.gambleId != null)
@@ -308,12 +324,14 @@ public class GambleMatchEntity {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("GambleMatch [id=");
+		builder.append("GambleMatchEntity [id=");
 		builder.append(id);
 		builder.append(", gambleId=");
 		builder.append(gambleId);
 		builder.append(", competitionId=");
 		builder.append(competitionId);
+		builder.append(", competitionName=");
+		builder.append(competitionName);
 		builder.append(", seasonId=");
 		builder.append(seasonId);
 		builder.append(", matchId=");

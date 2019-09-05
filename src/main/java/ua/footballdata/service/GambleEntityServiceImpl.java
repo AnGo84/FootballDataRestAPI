@@ -1,5 +1,6 @@
 package ua.footballdata.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.footballdata.model.entity.GambleEntity;
+import ua.footballdata.model.entity.GambleUser;
 import ua.footballdata.repositories.GambleEntityRepository;
 
 @Service("gambleEntityService")
@@ -52,16 +54,31 @@ public class GambleEntityServiceImpl implements CommonService<GambleEntity> {
 	public List<GambleEntity> findAllByActive(boolean active) {
 		logger.info("Active: {}", active);
 		List<GambleEntity> list = repository.findByActive(active);
-		// logger.info("Active list: {}", list);
-		/*
-		 * List<GambleRuleEntity> filteredList = list.stream().filter(s -> s.isActive()
-		 * == active) .collect(Collectors.toList()); logger.info("Get filteredList: {}",
-		 * filteredList); if (filteredList == null) {
-		 * logger.info("Get filteredList null"); return new ArrayList<>(); } return
-		 * filteredList;
-		 */
 		return list;
+	}
 
+	public List<GambleEntity> findAllActiveForUser(String login) {
+		logger.info("User Login: {}", login);
+		if (login == null || login.isEmpty()) {
+			return new ArrayList<>();
+		}
+		List<GambleEntity> list = repository.findByActive(true);
+		List<GambleEntity> userList = new ArrayList<>();
+		for (GambleEntity gambleEntity : list) {
+			if (gambleEntity.getParticipants() != null) {
+				for (GambleUser gambleUser : gambleEntity.getParticipants()) {
+					if (gambleUser.getLogin().equals(login)) {
+						userList.add(gambleEntity);
+						continue;
+					}
+
+				}
+			}
+		}
+
+		// List<GambleEntity> userList = list.stream().filter(c -> c.getParticipants() >
+		// 100).collect(Collectors.toList());
+		return userList;
 	}
 
 	@Override
