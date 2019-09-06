@@ -40,6 +40,19 @@ public class GambleMatchController {
 		return new ResponseEntity<List<GambleMatchEntity>>(entitiesList, HttpStatus.OK);
 	}
 
+	// ------- Retrieve All User's GambleMatchEntities by GambleId -------------
+
+	@RequestMapping(value = { "/gamble={gambleId}/user={login}" }, method = RequestMethod.GET)
+	public ResponseEntity<List<GambleMatchEntity>> listAllUserGambleMatchesByGamble(
+			@PathVariable("gambleId") long gambleId, @PathVariable("login") String login) {
+		List<GambleMatchEntity> entitiesList = entityService.findByUserAndGambleId(gambleId, login);
+		if (entitiesList == null || entitiesList.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<GambleMatchEntity>>(entitiesList, HttpStatus.OK);
+	}
+
 	// ------------ Retrieve Single GambleRuleEntity-------------------------------
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

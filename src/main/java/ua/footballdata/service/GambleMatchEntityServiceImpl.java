@@ -7,7 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amazonaws.util.StringUtils;
+
 import ua.footballdata.model.entity.GambleMatchEntity;
+import ua.footballdata.model.entity.User;
 import ua.footballdata.repositories.GambleMatchEntityRepository;
 
 @Service("gambleMatchEntityService")
@@ -15,6 +18,8 @@ public class GambleMatchEntityServiceImpl {
 	public static final Logger logger = LoggerFactory.getLogger(GambleMatchEntityServiceImpl.class);
 	@Autowired
 	private GambleMatchEntityRepository repository;
+	@Autowired
+	private UserServiceImpl userService;
 
 	public GambleMatchEntity findById(String id) {
 		// return repository.getOne(id);
@@ -93,6 +98,19 @@ public class GambleMatchEntityServiceImpl {
 		GambleMatchEntity entity = findById(id);
 		logger.info("GambleMatchEntity: " + entity);
 		return entity != null;
+	}
+
+	public List<GambleMatchEntity> findByUserAndGambleId(long gambleId, String login) {
+		logger.info("find GambleMatchEntities By GambleId: {} and user: {}", gambleId, login);
+		if (StringUtils.isNullOrEmpty(login)) {
+			return null;
+		}
+		User user = userService.findByLogin(login);
+		if (user == null) {
+			return null;
+		}
+		return repository.findByGambleIdAndUserId(gambleId, user.getId());
+
 	}
 
 }

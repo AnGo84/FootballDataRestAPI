@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import ua.footballdata.error.CustomErrorType;
 import ua.footballdata.model.entity.GambleEntity;
+import ua.footballdata.model.entity.GambleUserScore;
 import ua.footballdata.service.GambleEntityServiceImpl;
 
 @RestController
@@ -62,7 +63,7 @@ public class GambleController {
 		logger.info("Get All Active GambleEntities for user: {}", userLogin);
 		List<GambleEntity> gambles = gambleEntityService.findAllActiveForUser(userLogin);
 		if (gambles.isEmpty()) {
-			logger.info("Active GambleEntities list is null or empty");
+			logger.info("Active GambleEntities for user {} is null or empty", userLogin);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
 		}
@@ -133,22 +134,34 @@ public class GambleController {
 
 	// --------------- Delete a GambleEntity ---------------------------------
 
-	/*
-	 * @RequestMapping(value = "/delete-{id}", method = RequestMethod.DELETE) public
-	 * ResponseEntity<?> delete(@PathVariable("id") long id) {
-	 * logger.info("Fetching & Deleting CompetitionEntity with id {}", id);
-	 *
-	 * CompetitionEntity entity = competitionEntityService.findById(id); if (entity
-	 * == null) {
-	 * logger.error("Unable to delete. CompetitionEntity with id {} not found.",
-	 * id); return new ResponseEntity( new
-	 * CustomErrorType("Unable to delete. Competition with id " + id +
-	 * " not found."), HttpStatus.NOT_FOUND); }
-	 * competitionEntityService.deleteById(id); return new
-	 * ResponseEntity<AppResponse>(new AppResponse("Deleted Competition: " +
-	 * entity.getName()), HttpStatus.NO_CONTENT);
-	 *
-	 * }
-	 */
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable("id") long id) {
+		logger.info("Fetching & Deleting GambleEntity with id {}", id);
+
+		GambleEntity entity = gambleEntityService.findById(id);
+		if (entity == null) {
+			logger.error("Unable to delete. GambleEntity with id {} not found.", id);
+			return new ResponseEntity(new CustomErrorType("Unable to delete. Gamble with id " + id + " not found."),
+					HttpStatus.NOT_FOUND);
+		}
+		gambleEntityService.deleteById(id);
+		return new ResponseEntity<AppResponse>(new AppResponse("Deleted Gamble: " + entity.getName()),
+				HttpStatus.NO_CONTENT);
+
+	}
+
+	// ----------- Retrieve Gamble USers' Scores ------------------------------
+
+	@RequestMapping(value = { "{gambleId}/users/scores" }, method = RequestMethod.GET)
+	public ResponseEntity<List<GambleUserScore>> getGambleUsersScores(@PathVariable("gambleId") long gambleId) {
+		logger.info("Get Gamble Users' Scores for id: {}", gambleId);
+		List<GambleUserScore> gambles = gambleEntityService.getGambleUsersScores(gambleId);
+		if (gambles.isEmpty()) {
+			logger.info("Users' Scores for gamble {} is null or empty", gambleId);
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<GambleUserScore>>(gambles, HttpStatus.OK);
+	}
 
 }

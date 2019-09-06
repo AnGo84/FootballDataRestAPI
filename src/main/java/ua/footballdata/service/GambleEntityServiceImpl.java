@@ -1,7 +1,10 @@
 package ua.footballdata.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,14 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.footballdata.model.entity.GambleEntity;
+import ua.footballdata.model.entity.GambleMatchEntity;
 import ua.footballdata.model.entity.GambleUser;
+import ua.footballdata.model.entity.GambleUserScore;
 import ua.footballdata.repositories.GambleEntityRepository;
+import ua.footballdata.repositories.GambleMatchEntityRepository;
 
 @Service("gambleEntityService")
 public class GambleEntityServiceImpl implements CommonService<GambleEntity> {
 	public static final Logger logger = LoggerFactory.getLogger(GambleEntityServiceImpl.class);
 	@Autowired
 	private GambleEntityRepository repository;
+	@Autowired
+	private GambleMatchEntityRepository matchRepository;
 
 	@Override
 	public GambleEntity findById(long id) {
@@ -90,6 +98,30 @@ public class GambleEntityServiceImpl implements CommonService<GambleEntity> {
 		GambleEntity entity = findById(id);
 		logger.info("GambleEntity: " + entity);
 		return entity != null;
+	}
+
+	public List<GambleUserScore> getGambleUsersScores(long gambleId) {
+		List<GambleMatchEntity> gambleMatchs = matchRepository.findByGambleId(gambleId);
+		if (gambleMatchs == null || gambleMatchs.isEmpty()) {
+			return null;
+		}
+		Map<Long, GambleUserScore> map = new HashMap<>();
+		gambleMatchs.forEach(match -> {
+			int userScore = (match.getTotal() == null ? 0 : match.getTotal());
+			GambleUserScore gambleUserScore;
+			if (map.containsKey(match.getUserId())) {
+				gambleUserScore = map.get(match.getUserId());
+				gambleUserScore.setScore(gambleUserScore.getScore() + userScore);
+			} else {
+				gambleUserScore = new GambleUserScore(gambleId, match.getUser(), userScore);
+			}
+			map.put(match.getUserId(), gambleUserScore);
+		});
+		if (map.isEmpty()) {
+			return null;
+		}
+		List<GambleUserScore> resultGambleUserScoresList = map.values().stream().collect(Collectors.toList());
+		return resultGambleUserScoresList;
 	}
 
 }
