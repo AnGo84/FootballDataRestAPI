@@ -165,10 +165,10 @@ public class GambleMatchController {
 
 	// ------ Delete All Gamble Matches by gambleId, userId ------
 
-	@RequestMapping(value = { "/delete/all/gamble={gambleId}/user={userId}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/delete/all/gamble={gambleId}/user={userId}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteAllGambleMatchesByGambleIdAndUserId(@PathVariable("gambleId") long gambleId,
 			@PathVariable("userId") long userId) {
-		logger.info("Delete All Gamble Matches by gambleId= {}, userId= {}", gambleId);
+		logger.info("Delete All Gamble Matches by gambleId= {}, userId= {}", gambleId, userId);
 		entityService.deleteAllGambleMatchesByGambleIdAndUserId(gambleId, userId);
 
 		return new ResponseEntity<GambleMatchEntity>(HttpStatus.NO_CONTENT);
