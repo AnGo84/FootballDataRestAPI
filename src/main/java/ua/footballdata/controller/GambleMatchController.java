@@ -57,21 +57,21 @@ public class GambleMatchController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getGambleGambleMatch(@PathVariable("id") String id) {
-		logger.info("Fetching GambleMatcheEntity with id {}", id);
+		logger.info("Fetching GambleMatchEntity with id {}", id);
 		GambleMatchEntity entity = null;
 		try {
 			entity = entityService.findById(id);
 
 			if (entity == null) {
-				logger.error("GambleMatcheEntity with id {} not found.", id);
+				logger.error("GambleMatchEntity with id {} not found.", id);
 				return new ResponseEntity(new CustomErrorType("GambleMatche with id " + id + " not found"),
 						HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<GambleMatchEntity>(entity, HttpStatus.OK);
 		} catch (Exception e) {
-			logger.error("Getting data for GambleMatche {} error.", id, e);
+			logger.error("Getting data for GambleMatch {} error.", id, e);
 			return new ResponseEntity(
-					new CustomErrorType("Getting data for GambleMatche " + id + " error. " + e.getMessage()),
+					new CustomErrorType("Getting data for GambleMatch " + id + " error. " + e.getMessage()),
 					HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -101,7 +101,7 @@ public class GambleMatchController {
 	@RequestMapping(value = "/save/all/list", method = RequestMethod.POST)
 	public ResponseEntity<?> saveAllGambleMatches(@RequestBody List<GambleMatchEntity> saveList,
 			UriComponentsBuilder ucBuilder) {
-		logger.info("Fetching & Saveing Gamble MatchEntities from list");
+		logger.info("Fetching & Saving Gamble MatchEntities from list");
 		if (saveList == null || saveList.isEmpty()) {
 			return new ResponseEntity<GambleMatchEntity>(HttpStatus.NO_CONTENT);
 		}
@@ -179,7 +179,7 @@ public class GambleMatchController {
 	public ResponseEntity<?> deleteAllGambleMatchesByGambleIdAndCompetitionIdAndStage(
 			@PathVariable("gambleId") long gambleId, @PathVariable("competitionId") long competitionId,
 			@PathVariable("stage") String stage) {
-		logger.info("Fetching & Deleting Gamble MatchEntities with gambleId={}, competitonId={} stage={} ", gambleId,
+		logger.info("Fetching & Deleting Gamble MatchEntities with gambleId={}, competitionId={} stage={} ", gambleId,
 				competitionId, stage);
 
 		entityService.deleteAllGambleMatchesByGambleIdAndCompetitionIdAndStage(gambleId, competitionId, stage);
