@@ -175,7 +175,7 @@ public class GambleMatchController {
 	}
 
 	// -- Delete all Gamble MatchEntities by GambleId And CompetitionId And Stage --
-	@RequestMapping(value = "/delete/all/gamble={gambleId}/competiton={competitionId}/stage={stage}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/all/gamble={gambleId}/competition={competitionId}/stage={stage}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteAllGambleMatchesByGambleIdAndCompetitionIdAndStage(
 			@PathVariable("gambleId") long gambleId, @PathVariable("competitionId") long competitionId,
 			@PathVariable("stage") String stage) {
