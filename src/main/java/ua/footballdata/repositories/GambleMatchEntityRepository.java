@@ -29,5 +29,7 @@ public interface GambleMatchEntityRepository extends CrudRepository<GambleMatchE
 
 	void deleteByGambleId(Long gambleId);
 
+	void deleteByGambleIdAndUserId(Long gambleId, Long userId);
+
 	void deleteByGambleIdAndCompetitionIdAndStage(Long gambleId, Long competitionId, String stage);
 }

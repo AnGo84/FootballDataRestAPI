@@ -68,6 +68,11 @@ public class GambleMatchEntityServiceImpl {
 		repository.deleteByGambleId(gambleId);
 	}
 
+	public void deleteAllGambleMatchesByGambleIdAndUserId(long gambleId, long userId) {
+		logger.info("Delete All GambleMatchEntities By GambleId= {} And UserId= {}", gambleId, userId);
+		repository.deleteByGambleIdAndUserId(gambleId, userId);
+	}
+
 	public void deleteAllGambleMatchesByGambleIdAndCompetitionIdAndStage(long gambleId, long competitionId,
 			String stage) {
 		logger.info("Delete All GambleMatchEntities By GambleId= {} And CompetitionId= {} And Stage {}", gambleId,

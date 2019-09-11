@@ -163,16 +163,13 @@ public class GambleMatchController {
 		return new ResponseEntity<GambleMatchEntity>(HttpStatus.NO_CONTENT);
 	}
 
-	// ------ Delete All Gamble Matches by gambleId, competitionId and state ------
+	// ------ Delete All Gamble Matches by gambleId, userId ------
 
-	@RequestMapping(value = {
-			"/deleteall/gambleid={gambleId}/competitionid={competitionId}/state={state}" }, method = RequestMethod.GET)
-	public ResponseEntity<?> DeleteAllGambleMatchesByGambleIdAndCompetitionIdAndState(
-			@PathVariable("gambleId") long gambleId, @PathVariable("competitionId") long competitionId,
-			@PathVariable("state") String state) {
-		logger.info("Delete All Gamble Matches by gambleId= {}, competitionId= {} and state= {}", gambleId,
-				competitionId, state);
-		entityService.deleteAllGambleMatchesByGambleIdAndCompetitionIdAndStage(gambleId, competitionId, state);
+	@RequestMapping(value = { "/delete/all/gamble={gambleId}/user={userId}" }, method = RequestMethod.GET)
+	public ResponseEntity<?> deleteAllGambleMatchesByGambleIdAndUserId(@PathVariable("gambleId") long gambleId,
+			@PathVariable("userId") long userId) {
+		logger.info("Delete All Gamble Matches by gambleId= {}, userId= {}", gambleId);
+		entityService.deleteAllGambleMatchesByGambleIdAndUserId(gambleId, userId);
 
 		return new ResponseEntity<GambleMatchEntity>(HttpStatus.NO_CONTENT);
 	}
