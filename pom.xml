@@ -26,6 +26,9 @@
 
 		<modelmapper.version>2.3.0</modelmapper.version>
 
+		<dynamodb>5.1.0</dynamodb>
+		<springfox.swagger>2.9.2</springfox.swagger>
+
 	</properties>
 
 	<dependencies>
@@ -79,9 +82,27 @@
 		<dependency>
 			<groupId>com.github.derjust</groupId>
 			<artifactId>spring-data-dynamodb</artifactId>
-			<version>5.1.0</version>
+			<version>${dynamodb}</version>
 		</dependency>
 		<!-- / DynamoDB -->
+
+		<!-- springfox-swagger2
+			https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+			https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+			https://dzone.com/articles/spring-boot-2-restful-api-documentation-with-swagg
+		-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.swagger}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.swagger}</version>
+		</dependency>
+		<!--	/ springfox-swagger2	-->
 
 	</dependencies>
 
